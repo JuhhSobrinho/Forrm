@@ -1,0 +1,4 @@
+.form-label {
+  min-height: 38px; /* ou 40px, dependendo do seu design */
+  display: inline-block;
+}

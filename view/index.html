@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/view/style.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+            rel="stylesheet">
+        <title>PJ - RDE</title>
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+        <!-- Example Code Start-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">TISI TEAM</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page"
+                            href="#">Formulario RDE</a>
+                        <a class="nav-link" href="#">Historico</a>
+                        <a class="nav-link disabled" aria-disabled="true">Modo
+                            Calro</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <form id="formRelatorio">
+
+            <!-- Cliente e Local -->
+            <div class="row g-3 mb-3">
+                <!-- Coluna da esquerda -->
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="cliente" class="form-label">Cliente</label>
+                        <input type="text" class="form-control" id="cliente"
+                            placeholder="Ex: PETROBRAS" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="data"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Coluna da direita -->
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="local" class="form-label">Local</label>
+                        <input type="text" class="form-control" id="local"
+                            placeholder="Ex: P-74" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="osTeam" class="form-label">OS Team</label>
+                        <input type="text" class="form-control" id="osTeam"
+                            placeholder="Ex: 8104-24-0104">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tipo do Reparo (Checkbox) -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    Tipo do Reparo
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="DTFCR ST-QE" id="reparo1">
+                                <label class="form-check-label"
+                                    for="reparo1">TFCR ST-QE</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="ITFCR ST-QC" id="reparo2">
+                                <label class="form-check-label"
+                                    for="reparo2">TFCR ST-QC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR ST-BC" id="reparo3">
+                                <label class="form-check-label"
+                                    for="reparo3">TFCR ST-BC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR HT-QE" id="reparo4">
+                                <label class="form-check-label"
+                                    for="reparo4">TFCR HT-QE</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR HT-QC" id="reparo5">
+                                <label class="form-check-label"
+                                    for="reparo5">TFCR HT-QC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR HT-BC" id="reparo6">
+                                <label class="form-check-label"
+                                    for="reparo6">TFCR HT-BC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR UT-QE" id="reparo7">
+                                <label class="form-check-label"
+                                    for="reparo7">TFCR UT-QE</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR UT-QC" id="reparo8">
+                                <label class="form-check-label"
+                                    for="reparo8">TFCR UT-QC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="TFCR UT-BC" id="reparo9">
+                                <label class="form-check-label"
+                                    for="reparo9">TFCR UT-BC</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="SLCR ST-ME" id="reparo10">
+                                <label class="form-check-label"
+                                    for="reparo10">SLCR ST-ME</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="SLCR MM-ME" id="reparo11">
+                                <label class="form-check-label"
+                                    for="reparo11">SLCR MM-ME</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="SLCR MSQ-ME" id="reparo12">
+                                <label class="form-check-label"
+                                    for="reparo12">SLCR MSQ-ME</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Geometria do Reparo
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="FLANGE" id="geo1">
+                                <label class="form-check-label"
+                                    for="geo1">FLANGE</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="VALVULA" id="geo2">
+                                <label class="form-check-label"
+                                    for="geo2">VÁLVULA</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="T.RETO" id="geo3">
+                                <label class="form-check-label" for="geo3">T.
+                                    RETO</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="CURVA45" id="geo4">
+                                <label class="form-check-label" for="geo4">CURVA
+                                    45°C</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="CURVA90" id="geo5">
+                                <label class="form-check-label" for="geo5">CURVA
+                                    90°C</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="TEE" id="geo6">
+                                <label class="form-check-label"
+                                    for="geo6">TEE</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="REDUÇÃO" id="geo7">
+                                <label class="form-check-label"
+                                    for="geo7">REDUÇÃO</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="TANQUE" id="geo8">
+                                <label class="form-check-label"
+                                    for="geo8">TANQUE</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox"
+                                    value="OUTROS" id="geo9">
+                                <label class="form-check-label"
+                                    for="geo9">OUTROS</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dados de Projeto -->
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Dados do Projeto
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 mb-3">
+                        <!-- Coluna da esquerda -->
+                        <div
+                            class="col-6 d-flex flex-column justify-content-end">
+                            <div class="mb-3">
+                                <label for="diametro"
+                                    class="form-label">Diâmetro (in)</label>
+                                <input type="text" class="form-control"
+                                    id="diametro" placeholder="Ex: 2&quot;">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tag" class="form-label">TAG do
+                                    Equipamento</label>
+                                <input type="text" class="form-control"
+                                    id="tag">
+                            </div>
+                            <div class="mb-3">
+                                <label for="material"
+                                    class="form-label">Material do
+                                    Equipamento</label>
+                                <input type="text" class="form-control"
+                                    id="material">
+                            </div>
+                            <div class="mb-3">
+                                <label for="fluido" class="form-label">Fluído de
+                                    Operação</label>
+                                <input type="text" class="form-control"
+                                    id="fluido">
+                            </div>
+                            <div class="mb-3">
+                                <label for="comprimento"
+                                    class="form-label">Comprimento do Reparo
+                                    (mm)</label>
+                                <input type="number" class="form-control"
+                                    id="comprimento">
+                            </div>
+                        </div>
+
+                        <!-- Coluna da direita -->
+                        <div
+                            class="col-6 d-flex flex-column justify-content-end">
+                            <div class="mb-3">
+                                <label for="pressaoProjeto"
+                                    class="form-label">Pressão Projeto
+                                    (barg)</label>
+                                <input type="number" class="form-control"
+                                    id="pressaoProjeto" step="0.1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="temperaturaProjeto"
+                                    class="form-label">Temp do Projeto
+                                    (°C)</label>
+                                <input type="number" class="form-control"
+                                    id="temperaturaProjeto">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pressaoOperacao"
+                                    class="form-label">Pressão Operação
+                                    (barg)</label>
+                                <input type="number" class="form-control"
+                                    id="pressaoOperacao" step="0.1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="temperaturaOperacao"
+                                    class="form-label">Temp de Operação
+                                    (°C)</label>
+                                <input type="number" class="form-control"
+                                    id="temperaturaOperacao">
+                            </div>
+                            <div class="mb-3">
+                                <label for="camadas" class="form-label">Número
+                                    de Camadas</label>
+                                <input type="number" class="form-control"
+                                    id="camadas">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Condições de Aplicação
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 mb-3">
+                        <!-- Coluna da esquerda -->
+                        <div
+                            class="col-6 d-flex flex-column justify-content-end">
+                            <div class="mb-3">
+                                <label for="temperaturaAmbiente"
+                                    class="form-label">Temp Ambiente
+                                    (°C)</label>
+                                <input type="number" class="form-control"
+                                    id="temperaturaAmbiente">
+                            </div>
+                            <div class="mb-3">
+                                <label for="temperaturaSuperficie"
+                                    class="form-label">Temp Superfície
+                                    (°C)</label>
+                                <input type="number" class="form-control"
+                                    id="temperaturaSuperficie">
+                            </div>
+                            <div class="mb-3">
+                                <label for="rugosidadeSuperficie"
+                                    class="form-label">Rugosidade
+                                    Superfície</label>
+                                <input type="number" class="form-control"
+                                    id="rugosidadeSuperficie">
+                            </div>
+                        </div>
+
+                        <!-- Coluna da direita -->
+                        <div
+                            class="col-6 d-flex flex-column justify-content-end">
+                            <div class="mb-3">
+                                <label for="temperaturaOrvalho"
+                                    class="form-label">Temp Ponto de Orvalho
+                                    (°C)</label>
+                                <input type="number" class="form-control"
+                                    id="temperaturaOrvalho">
+                            </div>
+                            <div class="mb-3">
+                                <label for="umidadeRelativa"
+                                    class="form-label">Umidade Relativa</label>
+                                <input type="number" class="form-control"
+                                    id="umidadeRelativa">
+                            </div>
+                            <div class="mb-3">
+                                <label for="espessuraReparo"
+                                    class="form-label">Espessura do
+                                    Reparo</label>
+                                <input type="number" class="form-control"
+                                    id="espessuraReparo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="ResumoAtividades"
+                    class="form-label">Resumo das Atividades</label>
+                <textarea class="form-control" id="descricao" rows="4"
+                    placeholder=" Ex: Foi feito um reparo por compósitto na linha cittada a cima, etc."></textarea>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Registro Fotográfico
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 mb-3">
+                        <div class="col-12 col-md-4">
+                            <label for="AntesExeServico"
+                                class="form-label">Antes de Execução do
+                                Serviço</label>
+                            <input class="form-control" type="file"
+                                id="AntesExeServico" accept="image/*">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="AposExeServico" class="form-label">Após
+                                Execução do Serviço</label>
+                            <input class="form-control" type="file"
+                                id="AposExeServico" accept="image/*">
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label for="AposExePfp" class="form-label">Antes de
+                                Execução do PFP</label>
+                            <input class="form-control" type="file"
+                                id="AposExePfp" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão de envio -->
+            <button type="submit" class="btn btn-primary">
+                Gerar Relatório De Execução</button>
+        </form>
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- jsPDF-AutoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>        <script src="/controller/main.js" type="module"></script>
+    </body>
+
+</html>
