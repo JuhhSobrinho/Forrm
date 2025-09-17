@@ -1,161 +1,392 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Relatório de Execução</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20mm;
-        font-size: 12pt;
-    }
-    header {
-        text-align: center;
-        border-bottom: 2px solid #000;
-        padding-bottom: 10px;
-        margin-bottom: 15px;
-    }
-    header img {
-        max-height: 60px;
-    }
-    h1 {
-        font-size: 18pt;
-        margin: 5px 0;
-    }
-    h2 {
-        font-size: 14pt;
-        background: #ddd;
-        padding: 4px;
-        margin-top: 20px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 5px;
-    }
-    table, th, td {
-        border: 1px solid #000;
-    }
-    th, td {
-        padding: 4px;
-        text-align: left;
-    }
-    .checkbox-list {
-        margin-top: 5px;
-    }
-    .checkbox-list div {
-        margin-bottom: 3px;
-    }
-    footer {
-        margin-top: 30px;
-        border-top: 1px solid #000;
-        padding-top: 10px;
-        font-size: 10pt;
-        text-align: center;
-    }
-    @media print {
-        body {
-            margin: 0;
-        }
-    }
-</style>
-</head>
-<body>
 
-<header>
-    <img src="logo.png" alt="Logo da Empresa">
-    <h1>RELATÓRIO DE EXECUÇÃO DE SERVIÇO</h1>
-    <p>Reparo por Compósito</p>
-</header>
+    <head>
+        <meta charset="UTF-8">
+        <title>Relatório de Execução</title>
+        <link rel="stylesheet" href="/view/Modelo/rdeStyle.css">
+    </head>
 
-<section>
-    <h2>Dados Gerais</h2>
-    <table>
-        <tr><th>Cliente</th><td id="cliente"></td></tr>
-        <tr><th>Data</th><td id="data"></td></tr>
-        <tr><th>Local</th><td id="local"></td></tr>
-        <tr><th>OS Team</th><td id="osTeam"></td></tr>
-    </table>
-</section>
+    <body>
 
-<section>
-    <h2>Tipo do Reparo</h2>
-    <div class="checkbox-list" id="tiposReparo"></div>
-</section>
+        <header>
+            <div class="titulo-team">
+                <h1 class="team">TEAM</h1>
+            </div>
+            <div class="descricao-titulo-local-rde">
+                <h1 class="descricao-titulo">TISI do Brasil - Serviçoi
+                    Industriais Ltda.</h1>
+                <p class="p-local">Rua Doutor Luiz Itálico Bocco, 224 N. Sra do Perpétuo Socorro
+                    / Pindamonhangaba SP CEP 12421-200 / Brasil
+                </p>
+                <div class="titulo-rde-number">
+                    <h1 class="titulo-rde">Relarório de Execução de Serviço <br> Reparo por
+                        Compósito</h1>
+                    <h1 class="titulo-rde" id="tituloRde">N°01</h1>
+                </div>
+            </div>
+        </header>
 
-<section>
-    <h2>Geometria do Reparo</h2>
-    <div class="checkbox-list" id="geometriaReparo"></div>
-</section>
+        <section class="dados-gerais">
+            <div class="dados-gerais-descricao">
+                <div class="dados-gerais">
+                    <label class="label-geral" for="cliente">Cliente:</label>
+                    <input class="input-geral" type="text" id="cliente">
+                </div>
+                <div class="dados-gerais">
+                    <label class="label-geral" for="local">Local:</label>
+                    <input class="input-geral" type="text" id="local">
+                </div>
+            </div>
 
-<section>
-    <h2>Dados do Projeto</h2>
-    <table>
-        <tr><th>Diâmetro</th><td id="diametro"></td></tr>
-        <tr><th>TAG</th><td id="tag"></td></tr>
-        <tr><th>Material</th><td id="material"></td></tr>
-        <tr><th>Fluído</th><td id="fluido"></td></tr>
-        <tr><th>Comprimento</th><td id="comprimento"></td></tr>
-    </table>
-</section>
+            <div class="dados-gerais-descricao">
+                <div class="dados-gerais">
+                    <label class="label-geral" for="data">Data:</label>
+                    <input class="input-geral" type="text" id="data">
+                </div>
+                <div class="dados-gerais">
+                    <label class="label-geral" for="osTeam">OS Team:</label>
+                    <input class="input-geral" type="text" id="osTeam">
+                </div>
+            </div>
+        </section>
 
-<section>
-    <h2>Resumo das Atividades</h2>
-    <p id="descricao"></p>
-</section>
+        <section>
+            <h2 class="titulo-tabela-dados">Tipo do Reparo</h2>
+            <div class="checkbox-list" id="tiposReparo">
+                <table>
+                    <tr>
+                        <th class="tipo-reparo-check-box">
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="DTFCR ST-QE"
+                                id="reparo1">
+                            <label class="form-check-label" for="reparo1">TFCR
+                                ST-QE</label>
 
-<section>
-    <h2>Fotos</h2>
-    <div>
-        <p>Antes da Execução:</p>
-        <img id="fotoAntes" style="max-width: 100%; max-height: 200px;">
-    </div>
-    <div>
-        <p>Após Execução:</p>
-        <img id="fotoDepois" style="max-width: 100%; max-height: 200px;">
-    </div>
-    <div>
-        <p>Após Execução do PFP:</p>
-        <img id="fotoAntesPfp" style="max-width: 100%; max-height: 200px;">
-    </div>
-</section>
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR ST-QC"
+                                id="reparo2">
+                            <label class="form-check-label" for="reparo2">TFCR
+                                ST-QC</label>
 
-<footer>
-    <p>Assinatura Representante Team __________________________</p>
-    <p>Assinatura Cliente __________________________</p>
-</footer>
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR ST-BC"
+                                id="reparo3">
+                            <label class="form-check-label" for="reparo3">TFCR
+                                ST-BC</label>
 
-<script>
-    // Exemplo: preenchendo com dados do localStorage
-    const dados = JSON.parse(localStorage.getItem("relatorio")) || {};
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR HT-QE"
+                                id="reparo4">
+                            <label class="form-check-label" for="reparo4">TFCR
+                                HT-QE</label>
 
-    document.getElementById("cliente").textContent = dados.cliente || "";
-    document.getElementById("data").textContent = dados.data || "";
-    document.getElementById("local").textContent = dados.local || "";
-    document.getElementById("osTeam").textContent = dados.osTeam || "";
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR HT-QC"
+                                id="reparo5">
+                            <label class="form-check-label" for="reparo5">TFCR
+                                HT-QC</label>
 
-    if (dados.tiposReparo) {
-        document.getElementById("tiposReparo").innerHTML = dados.tiposReparo.map(t => `<div>☑ ${t}</div>`).join("");
-    }
-    if (dados.geometriaReparo) {
-        document.getElementById("geometriaReparo").innerHTML = dados.geometriaReparo.map(g => `<div>☑ ${g}</div>`).join("");
-    }
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR HT-BC"
+                                id="reparo6">
+                            <label class="form-check-label" for="reparo6">TFCR
+                                HT-BC</label>
 
-    document.getElementById("diametro").textContent = dados.diametro || "";
-    document.getElementById("tag").textContent = dados.tag || "";
-    document.getElementById("material").textContent = dados.material || "";
-    document.getElementById("fluido").textContent = dados.fluido || "";
-    document.getElementById("comprimento").textContent = dados.comprimento || "";
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="tipo-reparo-check-box">
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR UT-QE"
+                                id="reparo7">
+                            <label class="form-check-label" for="reparo7">TFCR
+                                UT-QE</label>
 
-    document.getElementById("descricao").textContent = dados.descricao || "";
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR UT-QC"
+                                id="reparo8">
+                            <label class="form-check-label" for="reparo8">TFCR
+                                UT-QC</label>
 
-    if (dados.fotoAntesBase64) document.getElementById("fotoAntes").src = dados.fotoAntesBase64;
-    if (dados.fotoDepoisBase64) document.getElementById("fotoDepois").src = dados.fotoDepoisBase64;
-    if (dados.fotoAntesPfpBase64) document.getElementById("fotoAntesPfp").src = dados.fotoAntesPfpBase64;
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="TFCR UT-BC"
+                                id="reparo9">
+                            <label class="form-check-label" for="reparo9">TFCR
+                                UT-BC</label>
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="SLCR ST-ME"
+                                id="reparo10">
+                            <label class="form-check-label" for="reparo10">SLCR
+                                ST-ME</label>
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="SLCR MM-ME"
+                                id="reparo11">
+                            <label class="form-check-label" for="reparo11">SLCR
+                                MM-ME</label>
+                            <input class="form-check-input" name="tipoReparo"
+                                type="checkbox" value="SLCR MSQ-ME"
+                                id="reparo12">
+                            <label class="form-check-label" for="reparo12">SLCR
+                                MSQ-ME</label>
+                        </th>
+                    </tr>
+                </table>
 
-    // Dispara impressão automática
-    window.print();
-</script>
+            </div>
+        </section>
 
-</body>
+        <section>
+            <h2 class="titulo-tabela-dados">Geometria do Reparo</h2>
+            <table>
+                <tr>
+                    <th class="checkbox-list" id="geometriaReparo">
+
+                        <input class="form-check-input" type="checkbox"
+                            value="FLANGE" id="geo1">
+                        <label class="form-check-label"
+                            for="geo1">FLANGE</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="VALVULA" id="geo2">
+                        <label class="form-check-label"
+                            for="geo2">VÁLVULA</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="T.RETO" id="geo3">
+                        <label class="form-check-label" for="geo3">T.
+                            RETO</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="CURVA45" id="geo4">
+                        <label class="form-check-label" for="geo4">CURVA
+                            45°C</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="CURVA90" id="geo5">
+                        <label class="form-check-label" for="geo5">CURVA
+                            90°C</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="TEE" id="geo6">
+                        <label class="form-check-label" for="geo6">TEE</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="REDUÇÃO" id="geo7">
+                        <label class="form-check-label"
+                            for="geo7">REDUÇÃO</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="TANQUE" id="geo8">
+                        <label class="form-check-label"
+                            for="geo8">TANQUE</label>
+
+                        <input class="form-check-input" type="checkbox"
+                            value="OUTROS" id="geo9">
+                        <label class="form-check-label"
+                            for="geo9">OUTROS</label>
+
+                    </th>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2 class="titulo-tabela-dados">Dados do Projeto</h2>
+            <div class="tabela-dados-projeto">
+                <table>
+                    <tr>
+                        <th>Diâmetro Equipamento:</th>
+                        <td class="campo-dados" id="diametro"></td>
+                    </tr>
+                    <tr>
+                        <th>TAG Equipamento:</th>
+                        <td class="campo-dados" id="tag"></td>
+                    </tr>
+                    <tr>
+                        <th>Material Equipamento:</th>
+                        <td class="campo-dados" id="material"></td>
+                    </tr>
+                    <tr>
+                        <th>Fluído Operação:</th>
+                        <td class="campo-dados" id="fluido"></td>
+                    </tr>
+                    <tr>
+                        <th>Comprimento Reparo:</th>
+                        <td class="campo-dados" id="comprimento"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Pressão de Projeto:</th>
+                        <td class="campo-dados" id="pressaoProjeto"></td>
+                    </tr>
+                    <tr>
+                        <th>Temperatura de Projeto:</th>
+                        <td class="campo-dados" id="temperaturaProjeto"></td>
+                    </tr>
+                    <tr>
+                        <th>Pressão de Operação:</th>
+                        <td class="campo-dados" id="pressaoOperacao"></td>
+                    </tr>
+                    <tr>
+                        <th>Temperatura de Operação:</th>
+                        <td class="campo-dados" id="temperaturaOperacao"></td>
+                    </tr>
+                    <tr>
+                        <th>Número de Camadas:</th>
+                        <td class="campo-dados" id="numeroCamadas"></td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="titulo-tabela-dados">Condições de Aplicação</h2>
+            <div class="tabela-dados-projeto">
+                <table>
+                    <tr>
+                        <th>Temperatura Ambiente:</th>
+                        <td class="campo-dados" id="temperaturaAmbiente"></td>
+                    </tr>
+                    <tr>
+                        <th>Temperatura Superficie:</th>
+                        <td class="campo-dados" id="temperaturaSuperficie"></td>
+                    </tr>
+                    <tr>
+                        <th>Rugosidade Superficie:</th>
+                        <td class="campo-dados" id="rugosidadeSuperficie"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Temp. Ponto de Orvalho:</th>
+                        <td class="campo-dados"
+                            id="temperaturaPontoOrvalho"></td>
+                    </tr>
+                    <tr>
+                        <th>Umidade Relativa:</th>
+                        <td class="campo-dados" id="umidadeRelativa"></td>
+                    </tr>
+                    <tr>
+                        <th>Espessura do Reparo:</th>
+                        <td class="campo-dados" id="espessuraReparo"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+
+        <section>
+            <h2 class="titulo-tabela-dados">Resumo das Atividades</h2>
+            <table>
+                <tr>
+                    <td class="campo-dados" id="resumoAtividades"></td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section>
+            <h2 class="titulo-tabela-dados">Fotos da Execução</h2>
+            <div class="tabela-dados-projeto">
+                <table>
+                    <tr class="table-imagens-legend">
+                        <th class="table-legends">Antes da Execução do
+                            Serviço</th>
+                        <td class="table-imagens">
+                            <img id="fotoAntes"
+                                style="max-width: 100%; max-height: 120px;"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr class="table-imagens-legend">
+                        <th class="table-legends">Após Execução</th>
+                        <td class="table-imagens">
+                            <img id="fotoDepois"
+                                style="max-width: 100%; max-height: 120px;"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr class="table-imagens-legend">
+                        <th class="table-legends">Após Execução do PFP</th>
+                        <td class="table-imagens">
+                            <img id="fotoAposPfp"
+                                style="max-width: 100%; max-height: 120px;"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+
+        <section>
+            <h2 class="titulo-tabela-dados">Materiais Utilizados</h2>
+            <div class="tabela-dados-material">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Qtd.</th>
+                            <th>Descrição do Material</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="item"></td>
+                            <td class="quantidade"></td>
+                            <td class="descricao-material"></td>
+                        </tr>
+                        <tr>
+                            <td class="item"></td>
+                            <td class="quantidade"></td>
+                            <td class="descricao-material"></td>
+                        </tr>
+                        <tr>
+                            <td class="item"></td>
+                            <td class="quantidade"></td>
+                            <td class="descricao-material"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Qtd.</th>
+                            <th>Descrição do Material</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="item"></td>
+                            <td class="quantidade"></td>
+                            <td class="descricao-material"></td>
+                        </tr>
+                        <tr>
+                            <td class="item"></td>
+                            <td class="quantidade"></td>
+                            <td class="descricao-material"></td>
+                        </tr>
+                        <tr>
+                            <td class="item"></td>
+                            <td class="quantidade"></td>
+                            <td class="descricao-material"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+        <footer>
+
+            <div class="ass-campo"><p>_________________________</p> <p>Representante Team</p></div>
+            <div class="ass-campo"><p>________.________._______</p> <p>Data</p></div>
+            <div class="ass-campo"><p>_________________________</p> <p>Representante Cliente</p></div>
+            <div class="ass-campo"><p>________.________._______</p> <p>Data</p></div>
+
+        </footer>
+
+        <script type="module" src="/controller/controller.js"></script>
+    </body>
+
 </html>

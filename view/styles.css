@@ -1,4 +1,39 @@
+:root {
+    --cor-destaque: rgb(0, 94, 170);
+}
 .form-label {
   min-height: 38px; /* ou 40px, dependendo do seu design */
   display: inline-block;
 }
+
+.titulo-resumo{
+  font-size: 15px !important;
+  font-weight: bold !important;
+  padding: 15px !important;
+}
+
+.card {
+  border: 1px solid var(--cor-destaque) !important;
+  border-radius: 8px !important;
+}
+
+.card-header{
+  font-weight: bold;
+  background-color: #ddd;
+  border-radius: 8px 8px 0px 0px !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+

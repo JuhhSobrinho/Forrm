@@ -1,12 +1,48 @@
 const { jsPDF } = window.jspdf;
 
 document.addEventListener("DOMContentLoaded", () => {
+    for (let i = 1; i <= 5; i++) {
+        const qtd = document.getElementById(`qtd0${i}`);
+        const desc = document.getElementById(`desc0${i}`);
+        const nextGrupo = document.getElementById(`grupo0${i + 1}`);
+
+        function mostrarProximo() {
+            if (qtd.value.trim() !== "" || desc.value.trim() !== "") {
+                nextGrupo.classList.remove("d-none");
+            }
+        }
+
+        qtd.addEventListener("input", mostrarProximo);
+        desc.addEventListener("input", mostrarProximo);
+    }
+
     const form = document.getElementById("formRelatorio");
+
+
+
+
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
+        const materiais = [];
+
+        for (let i = 1; i <= 6; i++) {
+            const qtd = document.getElementById(`qtd0${i}`);
+            const desc = document.getElementById(`desc0${i}`);
+
+            if (qtd && desc && (qtd.value.trim() !== "" || desc.value.trim() !== "")) {
+                materiais.push([
+                    `0${i}`, // ID do item
+                    qtd.value.trim(),
+                    desc.value.trim()
+                ]);
+            }
+        }
+
         // Captura dos dados do formulário (igual antes)
+        const nrde = document.getElementById("nrde").value;
+
         const cliente = document.getElementById("cliente").value;
         const local = document.getElementById("local").value;
         const data = document.getElementById("data").value;
@@ -51,27 +87,55 @@ document.addEventListener("DOMContentLoaded", () => {
         const fotoAntesPfpFile = document.getElementById("AposExePfp").files[0];
 
         // Função para converter arquivo em base64
-        function fileToBase64(file) {
+        function reduzirImagem(file, maxWidth = 600, maxHeight = 400) {
             return new Promise((resolve, reject) => {
-                if (!file) {
-                    resolve(null);
-                    return;
-                }
+                if (!file) return resolve(null);
+
+                const img = new Image();
                 const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
+
+                reader.onload = () => {
+                    img.src = reader.result;
+                };
+
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+
+                    let width = img.width;
+                    let height = img.height;
+
+                    // Redimensiona proporcionalmente
+                    if (width > maxWidth || height > maxHeight) {
+                        const ratio = Math.min(maxWidth / width, maxHeight / height);
+                        width *= ratio;
+                        height *= ratio;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const base64 = canvas.toDataURL("image/jpeg", 0.6); // qualidade reduzida
+                    resolve(base64);
+                };
+
+                reader.onerror = reject;
                 reader.readAsDataURL(file);
             });
         }
 
+
         // Converter as imagens
-        const fotoAntesBase64 = await fileToBase64(fotoAntesFile);
-        const fotoDepoisBase64 = await fileToBase64(fotoDepoisFile);
-        const fotoAntesPfpBase64 = await fileToBase64(fotoAntesPfpFile);
+        const fotoAntesBase64 = await reduzirImagem(fotoAntesFile);
+        const fotoDepoisBase64 = await reduzirImagem(fotoDepoisFile);
+        const fotoAntesPfpBase64 = await reduzirImagem(fotoAntesPfpFile);
+
 
 
         // Monta objeto dados
         const dados = {
+            nrde,
             cliente,
             local,
             data,
@@ -97,14 +161,16 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao,
             fotoAntesBase64,
             fotoDepoisBase64,
-            fotoAntesPfpBase64
-        };
-
+            fotoAntesPfpBase64,
+            materiais // ← aqui!
+        }; // abre o modelo em nova aba
         gerarPDF(dados);
     });
 });
 
 function gerarPDF(dados) {
+    localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
+    window.open("/view/Modelo/rdeModelo.html", "_blank");
     const doc = new jsPDF();
 
     // Cabeçalho
@@ -133,6 +199,7 @@ function gerarPDF(dados) {
         styles: { fontSize: 10 }
     });
     y = doc.lastAutoTable.finalY + 5;
+
 
     // Tipo do Reparo
     doc.setFontSize(12);

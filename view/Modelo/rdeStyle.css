@@ -1,0 +1,224 @@
+:root {
+    --cor-destaque: rgb(0, 94, 170);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 10mm;
+    font-size: 12pt;
+    border: 2px var(--cor-destaque) solid;
+    padding: 10px;
+}
+
+header {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+}
+
+.team {
+    background-color: var(--cor-destaque);
+    padding: auto 10px;
+    color: white;
+    font-size: 60px;
+    letter-spacing: 9px;
+    font-family: inherit;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.descricao-titulo-local-rde {
+    width: 100%;
+    text-align: right;
+}
+
+.descricao-titulo {
+    text-align: right;
+}
+
+.p-local {
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.titulo-rde-number {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.titulo-rde {
+    font-size: 14pt;
+    margin: 0;
+}
+
+.dados-gerais {
+    width: 100%;
+    display: flex;
+}
+
+.dados-gerais-descricao {
+    width: 100%;
+}
+
+.label-geral {
+    width: 100px;
+    margin-left: 10px;
+    color: var(--cor-destaque);
+}
+
+.input-geral,
+.input-geral:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--cor-destaque);
+}
+
+.input-geral {
+    width: 80%;
+}
+
+h1 {
+    font-size: 18pt;
+    margin: 5px 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 14pt;
+    background: #ddd;
+    padding: 4px;
+    margin-top: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+table,
+th,
+td {
+    margin: 0px;
+    border: 1px solid var(--cor-destaque);
+}
+
+th,
+td {
+    padding: 4px;
+    text-align: left;
+}
+
+th, .item, .quantidade, .descricao-material {
+    font-size: 12px;
+}
+
+.titulo-tabela-dados {
+    margin: 5px 0px 10px 0px;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: auto;
+    border: 2px solid var(--cor-destaque);
+}
+
+.checkbox-list {
+    display: flex;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.checkbox-list div {
+    margin-bottom: 3px;
+}
+
+.tipo-reparo-check-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-check-label {
+    font-size: 11px;
+}
+
+.tabela-dados-projeto, .tabela-dados-material {
+    display: flex;
+}
+
+.campo-dados {
+    width: 55%;
+}
+
+#resumoAtividades {
+    height: 50px;
+    overflow-y: auto;
+    /* rolagem vertical se passar do limite */
+    padding: 8px;
+    word-break: break-word;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.table-imagens-legend {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.table-legends {
+    text-align: center;
+}
+
+.table-imagens {
+    height: 120px;
+}
+
+.item,
+.quantidade {
+    text-align: center;
+    width: 10%;
+    height: 15px;
+}
+
+.descricao-material {
+    width: 80%;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 10pt;
+    text-align: center;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 5mm 5mm 0mm 5mm;
+        /* remove margem da página impressa */
+    }
+
+
+    body {
+        width: 210mm;
+        height: 297mm;
+        box-sizing: border-box;
+        margin: 0mm;
+        padding: 5mm 5mm 0mm 5mm;
+    }
+
+    .team {
+        background-color: var(--cor-destaque) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .titulo-tabela-dados {
+        border: 2px solid var(--cor-destaque) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
