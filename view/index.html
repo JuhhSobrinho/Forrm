@@ -29,9 +29,9 @@
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page"
                             href="#">Formulario RDE</a>
-                        <a class="nav-link" href="#">Historico</a>
-                        <a class="nav-link disabled" aria-disabled="true">Modo
-                            Calro</a>
+                        <a class="nav-link" href="#" id="toggleTheme">Modo
+                            Claro</a>
+
                     </div>
                 </div>
             </div>
@@ -41,10 +41,10 @@
             <!-- Cliente e Local -->
             <div class="row g-3 mb-3">
                 <div class="mb-3">
-                        <label for="cliente" class="form-label">Numero RDE</label>
-                        <input type="number" class="form-control" id="nrde"
-                            placeholder="Ex: 01" required>
-                    </div>
+                    <label for="cliente" class="form-label">Numero RDE</label>
+                    <input type="number" class="form-control" id="nrde"
+                        placeholder="Ex: 01" required>
+                </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="cliente" class="form-label">Cliente</label>
@@ -458,69 +458,68 @@
                 </div>
             </div>
 
-                <!-- Item 01 -->
-                <div class="row mb-3" id="grupo01">
-                    <div class="col-2">
-                        <label for="id01">ID</label>
-                        <input type="text" class="form-control" id="id01"
-                            value="01" readonly>
-                    </div>
-                    <div class="col-2">
-                        <label for="qtd01">Qtd.</label>
-                        <input type="number" class="form-control" id="qtd01">
-                    </div>
-                    <div class="col-8">
-                        <label for="desc01">Descrição do Material</label>
-                        <input type="text" class="form-control" id="desc01">
-                    </div>
+            <!-- Item 01 -->
+            <div class="row mb-3" id="grupo01">
+                <div class="col-2">
+                    <label for="id01">ID</label>
+                    <input type="text" class="form-control" id="id01"
+                        value="01" readonly>
                 </div>
-
-                <!-- Itens 02 a 06 (inicialmente ocultos) -->
-                <div class="row mb-3 d-none" id="grupo02">
-                    <div class="col-2"><input type="text" class="form-control"
-                            value="02" readonly></div>
-                    <div class="col-2"><input type="number" class="form-control"
-                            id="qtd02"></div>
-                    <div class="col-8"><input type="text" class="form-control"
-                            id="desc02"></div>
+                <div class="col-2">
+                    <label for="qtd01">Qtd.</label>
+                    <input type="number" class="form-control" id="qtd01">
                 </div>
-
-                <div class="row mb-3 d-none" id="grupo03">
-                    <div class="col-2"><input type="text" class="form-control"
-                            value="03" readonly></div>
-                    <div class="col-2"><input type="number" class="form-control"
-                            id="qtd03"></div>
-                    <div class="col-8"><input type="text" class="form-control"
-                            id="desc03"></div>
+                <div class="col-8">
+                    <label for="desc01">Descrição do Material</label>
+                    <input type="text" class="form-control" id="desc01">
                 </div>
+            </div>
 
-                <div class="row mb-3 d-none" id="grupo04">
-                    <div class="col-2"><input type="text" class="form-control"
-                            value="04" readonly></div>
-                    <div class="col-2"><input type="number" class="form-control"
-                            id="qtd04"></div>
-                    <div class="col-8"><input type="text" class="form-control"
-                            id="desc04"></div>
-                </div>
+            <!-- Itens 02 a 06 (inicialmente ocultos) -->
+            <div class="row mb-3 d-none" id="grupo02">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="02" readonly></div>
+                <div class="col-2"><input type="number" class="form-control"
+                        id="qtd02"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc02"></div>
+            </div>
 
-                <div class="row mb-3 d-none" id="grupo05">
-                    <div class="col-2"><input type="text" class="form-control"
-                            value="05" readonly></div>
-                    <div class="col-2"><input type="number" class="form-control"
-                            id="qtd05"></div>
-                    <div class="col-8"><input type="text" class="form-control"
-                            id="desc05"></div>
-                </div>
+            <div class="row mb-3 d-none" id="grupo03">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="03" readonly></div>
+                <div class="col-2"><input type="number" class="form-control"
+                        id="qtd03"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc03"></div>
+            </div>
 
-                <div class="row mb-3 d-none" id="grupo06">
-                    <div class="col-2"><input type="text" class="form-control"
-                            value="06" readonly></div>
-                    <div class="col-2"><input type="number" class="form-control"
-                            id="qtd06"></div>
-                    <div class="col-8"><input type="text" class="form-control"
-                            id="desc06"></div>
-                </div>
+            <div class="row mb-3 d-none" id="grupo04">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="04" readonly></div>
+                <div class="col-2"><input type="number" class="form-control"
+                        id="qtd04"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc04"></div>
+            </div>
 
+            <div class="row mb-3 d-none" id="grupo05">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="05" readonly></div>
+                <div class="col-2"><input type="number" class="form-control"
+                        id="qtd05"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc05"></div>
+            </div>
+
+            <div class="row mb-3 d-none" id="grupo06">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="06" readonly></div>
+                <div class="col-2"><input type="number" class="form-control"
+                        id="qtd06"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc06"></div>
+            </div>
 
             <!-- Botão de envio -->
             <button type="submit" class="btn btn-primary">

@@ -1,6 +1,38 @@
 const { jsPDF } = window.jspdf;
 
 document.addEventListener("DOMContentLoaded", () => {
+    const toggleLink = document.getElementById("toggleTheme");
+
+    function toggleTheme() {
+        const body = document.body;
+        const isDark = body.classList.contains("dark-mode");
+
+        body.classList.toggle("dark-mode");
+        body.classList.toggle("light-mode");
+
+        // Atualiza o texto do link
+        toggleLink.textContent = isDark ? "Modo Claro" : "Modo Escuro";
+    }
+
+    toggleLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleTheme();
+    });
+
+    // Tema padrão ao carregar
+    window.onload = () => {
+        document.body.classList.add("light-mode");
+        toggleLink.textContent = "Modo Escuro";
+    };
+
+
+    
+
+    // Tema padrão
+    window.onload = () => {
+        document.body.classList.add("light-mode");
+    };
+
     for (let i = 1; i <= 5; i++) {
         const qtd = document.getElementById(`qtd0${i}`);
         const desc = document.getElementById(`desc0${i}`);
