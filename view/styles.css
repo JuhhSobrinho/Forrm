@@ -88,9 +88,24 @@ body.dark-mode .form-check-label, body.dark-mode input::placeholder {
   color: var(--texto-claro);
 }
 
+.titulo-rde {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007BFF; /* azul vibrante */
+  border-left: 6px solid #007BFF;
+  padding-left: 15px;
+  margin-bottom: 25px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f8ff; /* azul clarinho */
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
 /* Navbar geral */
 .navbar {
-  border-radius: 5px;
+  border-radius: 5px 5px 0px 0px !important;
 }
 
 .navbar-brand:hover,
