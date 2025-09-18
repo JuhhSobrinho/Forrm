@@ -28,9 +28,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" aria-current="page"
-                            href="#">Formulario RDE</a>
-                        <a class="nav-link" href="#" id="toggleTheme">Modo
-                            Claro</a>
+                            href="#">Form RDE-Composito</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="#">Form RDE-Reparo</a>
+                        <a class="nav-link" href="#" id="toggleTheme">Ir para
+                            Modo Escuro</a>
 
                     </div>
                 </div>
@@ -42,19 +44,18 @@
             <div class="row g-3 mb-3">
                 <div class="mb-3">
                     <label for="cliente" class="form-label">Numero RDE</label>
-                    <input type="number" class="form-control" id="nrde"
-                        placeholder="Ex: 01" required>
+                    <input type="number" class="form-control campo-obrigatorio" id="nrde"
+                        placeholder="Ex: 01" >
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="cliente" class="form-label">Cliente</label>
-                        <input type="text" class="form-control" id="cliente"
-                            placeholder="Ex: PETROBRAS" required>
+                        <input type="text" class="form-control campo-obrigatorio" id="cliente"
+                            placeholder="Ex: PETROBRAS" >
                     </div>
                     <div class="mb-3">
                         <label for="data" class="form-label">Data</label>
-                        <input type="date" class="form-control" id="data"
-                            required>
+                        <input type="date" class="form-control campo-obrigatorio" id="data">
                     </div>
                 </div>
 
@@ -62,12 +63,12 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="local" class="form-label">Local</label>
-                        <input type="text" class="form-control" id="local"
-                            placeholder="Ex: P-74" required>
+                        <input type="text" class="form-control campo-obrigatorio" id="local"
+                            placeholder="Ex: P-74">
                     </div>
                     <div class="mb-3">
                         <label for="osTeam" class="form-label">OS Team</label>
-                        <input type="text" class="form-control" id="osTeam"
+                        <input type="text" class="form-control campo-obrigatorio" id="osTeam"
                             placeholder="Ex: 8104-24-0104">
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                             <div class="form-check">
                                 <input class="form-check-input"
                                     name="tipoReparo" type="checkbox"
-                                    value="DTFCR ST-QE" id="reparo1">
+                                    value="TFCR ST-QE" id="reparo1">
                                 <label class="form-check-label"
                                     for="reparo1">TFCR ST-QE</label>
                             </div>
@@ -93,7 +94,7 @@
                             <div class="form-check">
                                 <input class="form-check-input"
                                     name="tipoReparo" type="checkbox"
-                                    value="ITFCR ST-QC" id="reparo2">
+                                    value="TFCR ST-QC" id="reparo2">
                                 <label class="form-check-label"
                                     for="reparo2">TFCR ST-QC</label>
                             </div>
@@ -200,7 +201,7 @@
                     <div class="row mb-3">
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="FLANGE" id="geo1">
                                 <label class="form-check-label"
                                     for="geo1">FLANGE</label>
@@ -208,7 +209,7 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="VALVULA" id="geo2">
                                 <label class="form-check-label"
                                     for="geo2">VÁLVULA</label>
@@ -216,7 +217,7 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="T.RETO" id="geo3">
                                 <label class="form-check-label" for="geo3">T.
                                     RETO</label>
@@ -224,15 +225,15 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="CURVA45" id="geo4">
-                                <label class="form-check-label" for="geo4">CURVA
+                                <label class="form-check-label" name="tipoGeo" for="geo4">CURVA
                                     45°C</label>
                             </div>
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="CURVA90" id="geo5">
                                 <label class="form-check-label" for="geo5">CURVA
                                     90°C</label>
@@ -240,7 +241,7 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="TEE" id="geo6">
                                 <label class="form-check-label"
                                     for="geo6">TEE</label>
@@ -248,7 +249,7 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="REDUÇÃO" id="geo7">
                                 <label class="form-check-label"
                                     for="geo7">REDUÇÃO</label>
@@ -256,7 +257,7 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="TANQUE" id="geo8">
                                 <label class="form-check-label"
                                     for="geo8">TANQUE</label>
@@ -264,7 +265,7 @@
                         </div>
                         <div class="col-md-4 col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
+                                <input class="form-check-input" name="tipoGeo" type="checkbox"
                                     value="OUTROS" id="geo9">
                                 <label class="form-check-label"
                                     for="geo9">OUTROS</label>
@@ -288,34 +289,34 @@
                             <div class="mb-3">
                                 <label for="diametro"
                                     class="form-label">Diâmetro (in)</label>
-                                <input type="text" class="form-control"
+                                <input type="text" class="form-control campo-obrigatorio"
                                     id="diametro" placeholder="Ex: 2&quot;">
                             </div>
                             <div class="mb-3">
                                 <label for="tag" class="form-label">TAG do
                                     Equipamento</label>
-                                <input type="text" class="form-control"
-                                    id="tag">
+                                <input type="text" class="form-control campo-obrigatorio"
+                                    id="tag" placeholder="Ex: 1-ABC-1234">
                             </div>
                             <div class="mb-3">
                                 <label for="material"
                                     class="form-label">Material do
                                     Equipamento</label>
-                                <input type="text" class="form-control"
-                                    id="material">
+                                <input type="text" class="form-control campo-obrigatorio"
+                                    id="material" placeholder="Ex: Aço Carbono">
                             </div>
                             <div class="mb-3">
                                 <label for="fluido" class="form-label">Fluído de
                                     Operação</label>
-                                <input type="text" class="form-control"
-                                    id="fluido">
+                                <input type="text" class="form-control campo-obrigatorio"
+                                    id="fluido" placeholder="Ex: Agua do Mar">
                             </div>
                             <div class="mb-3">
                                 <label for="comprimento"
                                     class="form-label">Comprimento do Reparo
                                     (mm)</label>
-                                <input type="number" class="form-control"
-                                    id="comprimento">
+                                <input type="text" class="form-control campo-obrigatorio"
+                                    id="comprimento" placeholder="Ex: 150mm">
                             </div>
                         </div>
 
@@ -324,37 +325,35 @@
                             class="col-6 d-flex flex-column justify-content-end">
                             <div class="mb-3">
                                 <label for="pressaoProjeto"
-                                    class="form-label">Pressão Projeto
-                                    (barg)</label>
-                                <input type="number" class="form-control"
-                                    id="pressaoProjeto" step="0.1">
+                                    class="form-label">Pressão Projeto</label>
+                                <input type="text" class="form-control campo-obrigatorio"
+                                    id="pressaoProjeto" step="0.1" placeholder="Ex: 10.5 bar">
                             </div>
                             <div class="mb-3">
                                 <label for="temperaturaProjeto"
                                     class="form-label">Temp do Projeto
                                     (°C)</label>
-                                <input type="number" class="form-control"
-                                    id="temperaturaProjeto">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="temperaturaProjeto"    placeholder="Ex: 30">
                             </div>
                             <div class="mb-3">
                                 <label for="pressaoOperacao"
-                                    class="form-label">Pressão Operação
-                                    (barg)</label>
-                                <input type="number" class="form-control"
-                                    id="pressaoOperacao" step="0.1">
+                                    class="form-label">Pressão Operação</label>
+                                <input type="text" class="form-control campo-obrigatorio"
+                                    id="pressaoOperacao" step="0.1" placeholder="Ex: 10.5 bar">
                             </div>
                             <div class="mb-3">
                                 <label for="temperaturaOperacao"
                                     class="form-label">Temp de Operação
                                     (°C)</label>
-                                <input type="number" class="form-control"
-                                    id="temperaturaOperacao">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="temperaturaOperacao"   placeholder="Ex: 30">
                             </div>
                             <div class="mb-3">
                                 <label for="camadas" class="form-label">Número
                                     de Camadas</label>
-                                <input type="number" class="form-control"
-                                    id="camadas">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="camadas" placeholder="Ex: 3">
                             </div>
                         </div>
                     </div>
@@ -374,22 +373,22 @@
                                 <label for="temperaturaAmbiente"
                                     class="form-label">Temp Ambiente
                                     (°C)</label>
-                                <input type="number" class="form-control"
-                                    id="temperaturaAmbiente">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="temperaturaAmbiente" placeholder="Ex: 30"> 
                             </div>
                             <div class="mb-3">
                                 <label for="temperaturaSuperficie"
                                     class="form-label">Temp Superfície
                                     (°C)</label>
-                                <input type="number" class="form-control"
-                                    id="temperaturaSuperficie">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="temperaturaSuperficie" placeholder="Ex: 30">
                             </div>
                             <div class="mb-3">
                                 <label for="rugosidadeSuperficie"
                                     class="form-label">Rugosidade
                                     Superfície</label>
-                                <input type="number" class="form-control"
-                                    id="rugosidadeSuperficie">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="rugosidadeSuperficie" placeholder="Ex: 85">
                             </div>
                         </div>
 
@@ -400,21 +399,21 @@
                                 <label for="temperaturaOrvalho"
                                     class="form-label">Temp Ponto de Orvalho
                                     (°C)</label>
-                                <input type="number" class="form-control"
-                                    id="temperaturaOrvalho">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="temperaturaOrvalho" placeholder="Ex: 20">
                             </div>
                             <div class="mb-3">
                                 <label for="umidadeRelativa"
                                     class="form-label">Umidade Relativa</label>
-                                <input type="number" class="form-control"
-                                    id="umidadeRelativa">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="umidadeRelativa" placeholder="Ex: 85">
                             </div>
                             <div class="mb-3">
                                 <label for="espessuraReparo"
                                     class="form-label">Espessura do
                                     Reparo</label>
-                                <input type="number" class="form-control"
-                                    id="espessuraReparo">
+                                <input type="number" class="form-control campo-obrigatorio"
+                                    id="espessuraReparo" placeholder="Ex: 6mm">
                             </div>
                         </div>
                     </div>
@@ -425,7 +424,7 @@
                 <div class="card-header">
                     <h1 class="titulo-resumo">Resumo das Atividades</h1>
                 </div>
-                <textarea class="form-control" id="descricao" rows="4"
+                <textarea class="form-control" id="descricao" rows="4" maxlength="300"
                     placeholder=" Ex: Foi feito um reparo por compósitto na linha cittada a cima, etc."></textarea>
             </div>
 
@@ -439,19 +438,19 @@
                             <label for="AntesExeServico"
                                 class="form-label">Antes de Execução do
                                 Serviço</label>
-                            <input class="form-control" type="file"
+                            <input class="form-control campo-obrigatorio" type="file"
                                 id="AntesExeServico" accept="image/*">
                         </div>
                         <div class="col-12 col-md-4">
-                            <label for="AposExeServico" class="form-label">Após
+                            <label for="AposExeServico" class="form-label ">Após
                                 Execução do Serviço</label>
-                            <input class="form-control" type="file"
+                            <input class="form-control campo-obrigatorio" type="file"
                                 id="AposExeServico" accept="image/*">
                         </div>
                         <div class="col-12 col-md-4">
                             <label for="AposExePfp" class="form-label">Antes de
                                 Execução do PFP</label>
-                            <input class="form-control" type="file"
+                            <input class="form-control campo-obrigatorio" type="file"
                                 id="AposExePfp" accept="image/*">
                         </div>
                     </div>
@@ -467,11 +466,11 @@
                 </div>
                 <div class="col-2">
                     <label for="qtd01">Qtd.</label>
-                    <input type="number" class="form-control" id="qtd01">
+                    <input type="number" class="form-control campo-obrigatorio" id="qtd01" placeholder="Ex: 2">
                 </div>
                 <div class="col-8">
                     <label for="desc01">Descrição do Material</label>
-                    <input type="text" class="form-control" id="desc01">
+                    <input type="text" class="form-control campo-obrigatorio" id="desc01" placeholder="Ex: (Fita, Peel Ply, Thinner, etc)">
                 </div>
             </div>
 
@@ -527,8 +526,10 @@
         </form>
 
         <!-- jsPDF -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
         <script type="module" src="../controller/main.js"></script>
     </body>
 

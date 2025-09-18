@@ -111,7 +111,10 @@ td {
     text-align: left;
 }
 
-th, .item, .quantidade, .descricao-material {
+th,
+.item,
+.quantidade,
+.descricao-material {
     font-size: 12px;
 }
 
@@ -143,19 +146,20 @@ th, .item, .quantidade, .descricao-material {
     font-size: 11px;
 }
 
-.tabela-dados-projeto, .tabela-dados-material {
+.tabela-dados-projeto,
+.tabela-dados-material {
     display: flex;
 }
 
 .campo-dados {
     width: 55%;
+    font-size: 12px;
 }
 
 #resumoAtividades {
     height: 50px;
     overflow-y: auto;
-    /* rolagem vertical se passar do limite */
-    padding: 8px;
+    padding: 2px;
     word-break: break-word;
     line-height: 1.4;
     text-align: justify;
@@ -192,6 +196,13 @@ footer {
     justify-content: space-around;
     font-size: 10pt;
     text-align: center;
+    margin-top: 15px;
+}
+
+.ass-campo{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 
 @media print {
