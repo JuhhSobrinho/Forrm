@@ -204,6 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Salva e redireciona
         localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
-        window.open("/view/Modelo/rdeReparo.html", "_blank");
+        window.open("../view/Modelo/rdeReparo.html", "_blank");
     });
 });
