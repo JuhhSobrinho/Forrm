@@ -132,9 +132,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const furoSelecionado = document.querySelector('input[name="furoNaLinha"]:checked');
+        const todosFuro = document.querySelectorAll('input[name="furoNaLinha"]');
+
         if (!furoSelecionado) {
             alert("Selecione uma opção para 'Furo na Linha'.");
+
+            todosFuro.forEach(rb => {
+                rb.parentElement.style.border = "2px solid red";
+                rb.parentElement.style.borderRadius = "5px"; // opcional, pra ficar bonitinho
+                rb.parentElement.style.padding = "5px"; // se quiser dar espaço
+            });
+
             return;
+        } else {
+            todosFuro.forEach(rb => {
+                rb.parentElement.style.border = "none";
+            });
         }
 
 

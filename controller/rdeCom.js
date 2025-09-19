@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setText("temperaturaAmbiente", dados.temperaturaAmbiente + "°C");
   setText("temperaturaSuperficie", dados.temperaturaSuperficie + "°C");
-  setText("rugosidadeSuperficie", dados.rugosidadeSuperficie);
+  setText("rugosidadeSuperficie", dados.rugosidadeSuperficie) + "μm";
   setText("temperaturaPontoOrvalho", dados.temperaturaOrvalho + "°C");
   setText("umidadeRelativa", dados.umidadeRelativa + "%");
   setText("espessuraReparo", dados.espessuraReparo + "mm");
