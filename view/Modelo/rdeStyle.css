@@ -199,10 +199,15 @@ footer {
     margin-top: 15px;
 }
 
-.ass-campo{
+.ass-campo {
     display: flex;
     flex-direction: column;
     justify-content: end;
+}
+
+p{
+    margin: 0;
+    padding: 0;
 }
 
 @media print {
@@ -211,7 +216,6 @@ footer {
         margin: 5mm 5mm 0mm 5mm;
         /* remove margem da página impressa */
     }
-
 
     body {
         width: 210mm;

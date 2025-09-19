@@ -9,8 +9,6 @@
 
     <body>
 
-        
-
         <header>
             <div class="titulo-team">
                 <h1 class="team">TEAM</h1>
@@ -18,11 +16,13 @@
             <div class="descricao-titulo-local-rde">
                 <h1 class="descricao-titulo">TISI do Brasil - Serviçoi
                     Industriais Ltda.</h1>
-                <p class="p-local">Rua Doutor Luiz Itálico Bocco, 224 N. Sra do Perpétuo Socorro
+                <p class="p-local">Rua Doutor Luiz Itálico Bocco, 224 N. Sra do
+                    Perpétuo Socorro
                     / Pindamonhangaba SP CEP 12421-200 / Brasil
                 </p>
                 <div class="titulo-rde-number">
-                    <h1 class="titulo-rde">Relarório de Execução de Serviço <br> Reparo por
+                    <h1 class="titulo-rde">Relarório de Execução de Serviço <br>
+                        Reparo por
                         Compósito</h1>
                     <h1 class="titulo-rde" id="tituloRde">N°01</h1>
                 </div>
@@ -60,7 +60,7 @@
                     <tr>
                         <th class="tipo-reparo-check-box">
                             <input class="form-check-input" name="tipoReparo"
-                                type="checkbox" value="DTFCR ST-QE"
+                                type="checkbox" value="TFCR ST-QE"
                                 id="reparo1">
                             <label class="form-check-label" for="reparo1">TFCR
                                 ST-QE</label>
@@ -68,7 +68,8 @@
                             <input class="form-check-input" name="tipoReparo"
                                 type="checkbox" value="TFCR ST-QC"
                                 id="reparo2">
-                            <label class="form-check-label" for="reparo2">TFCR ST-QC</label>
+                            <label class="form-check-label" for="reparo2">TFCR
+                                ST-QC</label>
 
                             <input class="form-check-input" name="tipoReparo"
                                 type="checkbox" value="TFCR ST-BC"
@@ -82,6 +83,10 @@
                             <label class="form-check-label" for="reparo4">TFCR
                                 HT-QE</label>
 
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="tipo-reparo-check-box">
                             <input class="form-check-input" name="tipoReparo"
                                 type="checkbox" value="TFCR HT-QC"
                                 id="reparo5">
@@ -93,11 +98,6 @@
                                 id="reparo6">
                             <label class="form-check-label" for="reparo6">TFCR
                                 HT-BC</label>
-
-                        </th>
-                    </tr>
-                    <tr>
-                        <th class="tipo-reparo-check-box">
                             <input class="form-check-input" name="tipoReparo"
                                 type="checkbox" value="TFCR UT-QE"
                                 id="reparo7">
@@ -115,21 +115,7 @@
                                 id="reparo9">
                             <label class="form-check-label" for="reparo9">TFCR
                                 UT-BC</label>
-                            <input class="form-check-input" name="tipoReparo"
-                                type="checkbox" value="SLCR ST-ME"
-                                id="reparo10">
-                            <label class="form-check-label" for="reparo10">SLCR
-                                ST-ME</label>
-                            <input class="form-check-input" name="tipoReparo"
-                                type="checkbox" value="SLCR MM-ME"
-                                id="reparo11">
-                            <label class="form-check-label" for="reparo11">SLCR
-                                MM-ME</label>
-                            <input class="form-check-input" name="tipoReparo"
-                                type="checkbox" value="SLCR MSQ-ME"
-                                id="reparo12">
-                            <label class="form-check-label" for="reparo12">SLCR
-                                MSQ-ME</label>
+
                         </th>
                     </tr>
                 </table>
@@ -216,6 +202,14 @@
                         <th>Comprimento Reparo:</th>
                         <td class="campo-dados" id="comprimento"></td>
                     </tr>
+                    <tr>
+                        <th>Comprimento PFP:</th>
+                        <td class="campo-dados" id="comprimentoPFP"></td>
+                    </tr>
+                    <tr>
+                        <th>Furo na Linha:</th>
+                        <td class="campo-dados" id="furoNaLinha"></td>
+                    </tr>
                 </table>
                 <table>
                     <tr>
@@ -237,6 +231,14 @@
                     <tr>
                         <th>Número de Camadas:</th>
                         <td class="campo-dados" id="numeroCamadas"></td>
+                    </tr>
+                    <tr>
+                        <th>SS Cliente:</th>
+                        <td class="campo-dados" id="ssCliente"></td>
+                    </tr>
+                    <tr>
+                        <th>Número OM:</th>
+                        <td class="campo-dados" id="numeroOM"></td>
                     </tr>
                 </table>
             </div>
@@ -380,10 +382,14 @@
         </section>
         <footer>
 
-            <div class="ass-campo"><p>_________________________</p> <p>Representante Team</p></div>
-            <div class="ass-campo"><p>________.________._______</p> <p>Data</p></div>
-            <div class="ass-campo"><p>_________________________</p> <p>Representante Cliente</p></div>
-            <div class="ass-campo"><p>________.________._______</p> <p>Data</p></div>
+            <div class="ass-campo"><p>_________________________</p>
+                <p>Representante Team</p></div>
+            <div class="ass-campo"><p>________.________._______</p>
+                <p>Data</p></div>
+            <div class="ass-campo"><p>_________________________</p>
+                <p>Representante Cliente</p></div>
+            <div class="ass-campo"><p>________.________._______</p>
+                <p>Data</p></div>
 
         </footer>
         <script type="module" src="../../controller/rdeCom.js"></script>

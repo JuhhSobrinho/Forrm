@@ -131,6 +131,13 @@ document.addEventListener("DOMContentLoaded", () => {
             todosGeo.forEach(cb => cb.parentElement.style.border = "none");
         }
 
+        const furoSelecionado = document.querySelector('input[name="furoNaLinha"]:checked');
+        if (!furoSelecionado) {
+            alert("Selecione uma opção para 'Furo na Linha'.");
+            return;
+        }
+
+
 
         // Captura dos dados
         const nrde = document.getElementById("nrde").value;
@@ -153,11 +160,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const material = document.getElementById("material").value;
         const fluido = document.getElementById("fluido").value;
         const comprimento = document.getElementById("comprimento").value;
+
+        const comprimentoPFP = document.getElementById("comprimentoPFP").value;
+        const numeroOM = document.getElementById("numeroOM").value;
+
+
+
         const pressaoProjeto = document.getElementById("pressaoProjeto").value;
         const temperaturaProjeto = document.getElementById("temperaturaProjeto").value;
         const pressaoOperacao = document.getElementById("pressaoOperacao").value;
         const temperaturaOperacao = document.getElementById("temperaturaOperacao").value;
         const camadas = document.getElementById("camadas").value;
+
+        const ssCliente = document.getElementById("ssCliente").value;
+        const furoNaLinha = furoSelecionado ? furoSelecionado.value : null;
+
+
+
         const temperaturaAmbiente = document.getElementById("temperaturaAmbiente").value;
         const temperaturaSuperficie = document.getElementById("temperaturaSuperficie").value;
         const rugosidadeSuperficie = document.getElementById("rugosidadeSuperficie").value;
@@ -199,11 +218,15 @@ document.addEventListener("DOMContentLoaded", () => {
             material,
             fluido,
             comprimento,
+            comprimentoPFP,
+            numeroOM,
             pressaoProjeto,
             temperaturaProjeto,
             pressaoOperacao,
             temperaturaOperacao,
             camadas,
+            ssCliente,
+            furoNaLinha,
             temperaturaAmbiente,
             temperaturaSuperficie,
             rugosidadeSuperficie,

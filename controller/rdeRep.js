@@ -40,15 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
   setInputValue("data", dados.data);
   setInputValue("osTeam", dados.osTeam);
 
-  setText("diametro", dados.diametro);
+  setText("diametro", dados.diametro + '"');
   setText("tag", dados.tag);
   setText("material", dados.material);
   setText("numbInjecao", dados.numbInjecao);
   setText("comprimento", dados.comprimento);
   setText("pressaoProjeto", dados.pressaoProjeto);
-  setText("temperaturaProjeto", dados.temperaturaProjeto);
+  setText("temperaturaProjeto", dados.temperaturaProjeto + "°C");
   setText("pressaoOperacao", dados.pressaoOperacao);
-  setText("temperaturaOperacao", dados.temperaturaOperacao);
+  setText("temperaturaOperacao", dados.temperaturaOperacao + "°C");
   setText("pressInjecao", dados.pressInjecao);
   setText("resumoAtividades", dados.descricao);
 

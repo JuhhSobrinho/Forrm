@@ -40,22 +40,30 @@ document.addEventListener("DOMContentLoaded", () => {
   setInputValue("data", dados.data);
   setInputValue("osTeam", dados.osTeam);
 
-  setText("diametro", dados.diametro);
+  setText("diametro", dados.diametro + '"');
   setText("tag", dados.tag);
   setText("material", dados.material);
   setText("fluido", dados.fluido);
   setText("comprimento", dados.comprimento);
+
+  setText("comprimentoPFP", dados.comprimentoPFP);
+  setText("furoNaLinha", dados.furoNaLinha);
+
   setText("pressaoProjeto", dados.pressaoProjeto);
-  setText("temperaturaProjeto", dados.temperaturaProjeto);
+  setText("temperaturaProjeto", dados.temperaturaProjeto + "°C");
   setText("pressaoOperacao", dados.pressaoOperacao);
-  setText("temperaturaOperacao", dados.temperaturaOperacao);
+  setText("temperaturaOperacao", dados.temperaturaOperacao + "°C");
   setText("numeroCamadas", dados.camadas);
-  setText("temperaturaAmbiente", dados.temperaturaAmbiente);
-  setText("temperaturaSuperficie", dados.temperaturaSuperficie);
+
+  setText("ssCliente", dados.ssCliente);
+  setText("numeroOM", dados.numeroOM);
+
+  setText("temperaturaAmbiente", dados.temperaturaAmbiente + "°C");
+  setText("temperaturaSuperficie", dados.temperaturaSuperficie + "°C");
   setText("rugosidadeSuperficie", dados.rugosidadeSuperficie);
-  setText("temperaturaPontoOrvalho", dados.temperaturaOrvalho);
-  setText("umidadeRelativa", dados.umidadeRelativa);
-  setText("espessuraReparo", dados.espessuraReparo);
+  setText("temperaturaPontoOrvalho", dados.temperaturaOrvalho + "°C");
+  setText("umidadeRelativa", dados.umidadeRelativa + "%");
+  setText("espessuraReparo", dados.espessuraReparo + "mm");
   setText("resumoAtividades", dados.descricao);
 
   // Marcar checkboxes tiposReparo
