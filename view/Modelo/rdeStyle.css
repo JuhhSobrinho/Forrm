@@ -6,8 +6,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 10mm;
     font-size: 12pt;
-    border: 2px var(--cor-destaque) solid;
-    padding: 10px;
+    height: auto;
 }
 
 header {
@@ -51,6 +50,20 @@ header {
 .titulo-rde {
     font-size: 14pt;
     margin: 0;
+}
+
+.emissor-revisor {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.emissor-revisor-campo {
+    width: 50%;
+}
+
+.input-emi-rev{
+    width: 140px !important;
 }
 
 .dados-gerais {
@@ -115,7 +128,7 @@ th,
 .item,
 .quantidade,
 .descricao-material {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .titulo-tabela-dados {
@@ -142,8 +155,13 @@ th,
     justify-content: space-around;
 }
 
+.resina-fibra {
+    border-top: transparent;
+    border-bottom: transparent;
+}
+
 .form-check-label {
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .tabela-dados-projeto,
@@ -152,14 +170,27 @@ th,
 }
 
 .campo-dados {
-    width: 55%;
+    width: 50%;
+    font-size: 12px;
+}
+
+.text-area {
+    padding: 10px 10px 0px 10px;
+    width: 97.6%;
+    display: flex;
     font-size: 12px;
 }
 
 #resumoAtividades {
-    height: 50px;
+    height: 100px;
+    word-break: break-word;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+#anotacaoGerais {
+    height: 60vh;
     overflow-y: auto;
-    padding: 2px;
     word-break: break-word;
     line-height: 1.4;
     text-align: justify;
@@ -175,7 +206,7 @@ th,
 }
 
 .table-imagens {
-    height: 120px;
+    height: 170px;
 }
 
 .item,
@@ -196,7 +227,8 @@ footer {
     justify-content: space-around;
     font-size: 10pt;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 35px;
+    margin-bottom: 25px;
 }
 
 .ass-campo {
@@ -205,9 +237,15 @@ footer {
     justify-content: end;
 }
 
-p{
+p {
     margin: 0;
     padding: 0;
+}
+
+.pagina {
+    padding: 10px;
+    box-sizing: border-box;
+    border: 4px solid var(--cor-destaque);
 }
 
 @media print {
@@ -217,13 +255,42 @@ p{
         /* remove margem da página impressa */
     }
 
+    header {
+        position: fixed;
+        padding: 30px;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0px;
+        /* ajuste conforme seu header */
+        background: transparent;
+        border-top: 4px 4px 4px 4px solid var(--cor-destaque);
+    }
+
     body {
         width: 210mm;
-        height: 297mm;
-        box-sizing: border-box;
-        margin: 0mm;
+        height: auto;
+        margin: 0px 0mm 0mm 0mm;
         padding: 5mm 5mm 0mm 5mm;
     }
+
+
+    .pagina {
+        padding: 10px;
+        box-sizing: border-box;
+        border: 4px solid var(--cor-destaque);
+    }
+
+    .tbl-fotos-execucao {
+        page-break-after: always;
+        break-after: page;
+    }
+
+    .tbl-anotacoes,
+    .emissor-revisor {
+        margin-top: 130px;
+    }
+
 
     .team {
         background-color: var(--cor-destaque) !important;

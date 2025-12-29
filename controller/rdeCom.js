@@ -1,4 +1,9 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
+
+
+
   const dados = JSON.parse(localStorage.getItem("dadosRelatorio"));
   if (!dados) {
     alert("Dados não encontrados.");
@@ -10,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const linhas = document.querySelectorAll(".tabela-dados-material tbody tr");
 
     dados.materiais.forEach((mat, i) => {
+
       if (linhas[i]) {
         const linha = linhas[i];
         const tdItem = linha.querySelector(".item");
@@ -34,6 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (el) el.textContent = value || "";
   };
 
+  console.log(dados.nrde);
+
+  setInputValue("emissor", dados.emissor);
+  setInputValue("revisor", dados.revisor);
+
   setText("tituloRde", "N°" + dados.nrde);
   setInputValue("cliente", dados.cliente);
   setInputValue("local", dados.local);
@@ -46,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("fluido", dados.fluido);
   setText("comprimento", dados.comprimento);
 
+  setText("kitResimac101", dados.kitResimac101);
   setText("comprimentoPFP", dados.comprimentoPFP);
   setText("furoNaLinha", dados.furoNaLinha);
 
@@ -55,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("temperaturaOperacao", dados.temperaturaOperacao + "°C");
   setText("numeroCamadas", dados.camadas);
 
-  setText("ssCliente", dados.ssCliente);
+  setText("kitResimac114", dados.kitResimac114);
+  setText("espessuraPFP", dados.espessuraPFP);
   setText("numeroOM", dados.numeroOM);
 
   setText("temperaturaAmbiente", dados.temperaturaAmbiente + "°C");
@@ -91,7 +104,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setImage("fotoDepois", dados.fotoDepoisBase64);
   setImage("fotoAposPfp", dados.fotoAntesPfpBase64);
 
+  setText("anotacaoGerais", dados.anotacao);
 
-  window.print();
+
+  // window.print();
 
 });

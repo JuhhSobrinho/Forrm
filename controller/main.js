@@ -108,15 +108,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // 2. Validação de tipo de reparo
         const tipoReparoSelecionados = document.querySelectorAll('input[name="tipoReparo"]:checked');
         const todosTipoReparo = document.querySelectorAll('input[name="tipoReparo"]');
+        console.log(tipoReparoSelecionados.length);
 
-        if (tipoReparoSelecionados.length !== 1) {
-            alert("Selecione exatamente um tipo de reparo.");
+        if (tipoReparoSelecionados.length < 1 || tipoReparoSelecionados.length > 2) {
+            alert("Selecione exatamente um ou dois tipos de reparo.");
+            console.log(tipoReparoSelecionados.length);
+
             todosTipoReparo.forEach(cb => cb.parentElement.style.border = "2px solid red");
             tipoReparoSelecionados.forEach(cb => cb.parentElement.style.border = "none");
             return;
         } else {
             todosTipoReparo.forEach(cb => cb.parentElement.style.border = "none");
         }
+
 
         // 3. Validação de geometria
         const geoSelecionados = document.querySelectorAll('input[name="tipoGeo"]:checked');
@@ -152,7 +156,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        // Captura dos dados
+        // Captura dos dados ///////////////////////////////////////////////////
+
+
+        const emissor = document.getElementById("emitido").value;
+        const revisor = document.getElementById("revisado").value;
+
         const nrde = document.getElementById("nrde").value;
         const cliente = document.getElementById("cliente").value;
         const local = document.getElementById("local").value;
@@ -174,6 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const fluido = document.getElementById("fluido").value;
         const comprimento = document.getElementById("comprimento").value;
 
+
+        const kitResimac101 = document.getElementById("kitResimac101").value;
+        const kitResimac114 = document.getElementById("kitResimac114").value;
         const comprimentoPFP = document.getElementById("comprimentoPFP").value;
         const numeroOM = document.getElementById("numeroOM").value;
 
@@ -185,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const temperaturaOperacao = document.getElementById("temperaturaOperacao").value;
         const camadas = document.getElementById("camadas").value;
 
-        const ssCliente = document.getElementById("ssCliente").value;
+        const espessuraPFP = document.getElementById("espessuraPFP").value;
         const furoNaLinha = furoSelecionado ? furoSelecionado.value : null;
 
 
@@ -207,6 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const fotoDepoisBase64 = await reduzirImagem(fotoDepoisFile);
         const fotoAntesPfpBase64 = await reduzirImagem(fotoAntesPfpFile);
 
+        const anotacao = document.getElementById("anotacao").value;
+
         // Materiais
         const materiais = [];
         for (let i = 1; i <= 6; i++) {
@@ -219,6 +233,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Monta objeto final
         const dados = {
+            emissor,
+            revisor,
             nrde,
             cliente,
             local,
@@ -231,6 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
             material,
             fluido,
             comprimento,
+            kitResimac101,
             comprimentoPFP,
             numeroOM,
             pressaoProjeto,
@@ -238,7 +255,8 @@ document.addEventListener("DOMContentLoaded", () => {
             pressaoOperacao,
             temperaturaOperacao,
             camadas,
-            ssCliente,
+            espessuraPFP,
+            kitResimac114,
             furoNaLinha,
             temperaturaAmbiente,
             temperaturaSuperficie,
@@ -250,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
             fotoAntesBase64,
             fotoDepoisBase64,
             fotoAntesPfpBase64,
+            anotacao,
             materiais
         };
 

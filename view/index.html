@@ -41,14 +41,35 @@
         <h1 class="titulo-rde">RDE – Serviço Reparo por Compósito</h1>
         <form id="formRelatorio">
 
-            <!-- Cliente e Local -->
             <div class="row g-3 mb-3">
-                <div class="mb-3">
+                <div class="col-6">
+                    <div class="mb-3">
                     <label for="cliente" class="form-label">Numero RDE</label>
                     <input type="number" class="form-control campo-obrigatorio"
                         id="nrde"
                         placeholder="Ex: 01">
                 </div>
+                <div class="mb-3">
+                    <label for="emissor" class="form-label">Emitido Por</label>
+                    <input type="text" class="form-control campo-obrigatorio"
+                        id="emitido"
+                        placeholder="Ex: Nome do Emissor">
+                </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                    <label for="revisor" class="form-label">Revisado Por</label>
+                    <input type="text" class="form-control campo-obrigatorio"
+                        id="revisado"
+                        placeholder="Ex: Nome do Revisador">
+                </div>
+                </div>
+                
+                
+                
+            </div>
+            <!-- Cliente e Local -->
+            <div class="row g-3 mb-3">
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="cliente" class="form-label">Cliente</label>
@@ -166,6 +187,52 @@
                                     value="TFCR UT-BC" id="reparo9">
                                 <label class="form-check-label"
                                     for="reparo9">TFCR UT-BC</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="Jotachar JF750" id="reparo10">
+                                <label class="form-check-label"
+                                    for="reparo10">Jotachar JF750</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="Jotachar JF750 XT" id="reparo11">
+                                <label class="form-check-label"
+                                    for="reparo11">Jotachar JF750 XT</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="Firetex - M90/2" id="reparo12">
+                                <label class="form-check-label"
+                                    for="reparo12">Firetex - M90/2</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="Chartek 7E" id="reparo13">
+                                <label class="form-check-label"
+                                    for="reparo13">Chartek 7E</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                    name="tipoReparo" type="checkbox"
+                                    value="Contraflex PFP" id="reparo14">
+                                <label class="form-check-label"
+                                    for="reparo14">Contraflex PFP</label>
                             </div>
                         </div>
 
@@ -292,15 +359,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="material"
-                                    class="form-label">Material do
-                                    Equipamento</label>
+                                    class="form-label">Material Fab. Da Linha</label>
                                 <input type="text"
                                     class="form-control campo-obrigatorio"
                                     id="material" placeholder="Ex: Aço Carbono">
                             </div>
                             <div class="mb-3">
-                                <label for="fluido" class="form-label">Fluído de
-                                    Operação</label>
+                                <label for="fluido" class="form-label">Conteudo da Linha</label>
                                 <input type="text"
                                     class="form-control campo-obrigatorio"
                                     id="fluido" placeholder="Ex: Agua do Mar">
@@ -320,6 +385,13 @@
                                 <input type="text"
                                     class="form-control campo-obrigatorio"
                                     id="comprimentoPFP" placeholder="Ex: 900mm">
+                            </div>
+                            <div class="mb-3">
+                                <label for="kitResimac101"
+                                    class="form-label">Qtd Resimac 101:</label>
+                                <input type="number"
+                                    class="form-control campo-obrigatorio"
+                                    id="kitResimac101" placeholder="Ex: 0">
                             </div>
                             <div class="mb-3">
                                 <label for="comprimento"
@@ -377,10 +449,18 @@
                             </div>
                             <div class="mb-3">
                                 <label for="material"
-                                    class="form-label">SS Cliente:</label>
+                                    class="form-label">Espessura do PFP:</label>
                                 <input type="text"
                                     class="form-control campo-obrigatorio"
-                                    id="ssCliente" placeholder="Ex: 1234567">
+                                    id="espessuraPFP" placeholder="Ex: 25mm">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="kitResimac114"
+                                    class="form-label">Qtd Resimac 114:</label>
+                                <input type="number"
+                                    class="form-control campo-obrigatorio"
+                                    id="kitResimac114" placeholder="Ex: 2">
                             </div>
 
                             <div class="mb-3">
@@ -481,7 +561,7 @@
                 </div>
                 <textarea class="form-control" id="descricao" rows="4"
                     maxlength="300"
-                    placeholder=" Ex: Foi feito um reparo por compósitto na linha cittada a cima, etc."></textarea>
+                    placeholder=" Ex: Foi feito um reparo por compósitto na linha citada a cima, etc."></textarea>
             </div>
 
             <div class="card mb-4">
@@ -514,6 +594,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="card-header">
+                    <h1 class="titulo-resumo">Anotações Gerais</h1>
+                </div>
+                <textarea class="form-control" id="anotacao" rows="4"
+                    maxlength="600"
+                    placeholder=" Descreva nesse campo as difuculdades encontradas e as splições adotadas"></textarea>
             </div>
 
             <!-- Item 01 -->
