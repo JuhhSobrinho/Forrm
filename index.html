@@ -64,7 +64,7 @@
     </section>
     <script>
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").then(() => {
+    navigator.serviceWorker.register("./sw.js").then(() => {
       // espera 2 segundos e redireciona
       setTimeout(() => {
         window.location.href = "./view/index.html";
