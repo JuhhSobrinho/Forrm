@@ -107,6 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("anotacaoGerais", dados.anotacao);
 
 
-  // window.print();
+  window.print();
 
 });
