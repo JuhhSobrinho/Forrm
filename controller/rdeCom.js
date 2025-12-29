@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("fluido", dados.fluido);
   setText("comprimento", dados.comprimento);
 
-  setText("kitResimac101", dados.kitResimac101);
-  setText("comprimentoPFP", dados.comprimentoPFP);
+  setText("kitResimac101", dados.kitResimac101 == "0" ? "N/A" : dados.kitResimac101);
+  setText("comprimentoPFP", dados.comprimentoPFP == "" ? "N/A" : dados.comprimentoPFP);
   setText("furoNaLinha", dados.furoNaLinha);
 
   setText("pressaoProjeto", dados.pressaoProjeto);
@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("temperaturaOperacao", dados.temperaturaOperacao + "°C");
   setText("numeroCamadas", dados.camadas);
 
-  setText("kitResimac114", dados.kitResimac114);
-  setText("espessuraPFP", dados.espessuraPFP);
+  setText("kitResimac114", dados.kitResimac114 == "0" ? "N/A" : dados.kitResimac114);
+  setText("espessuraPFP", dados.espessuraPFP == "" ? "N/A" : dados.espessuraPFP);
   setText("numeroOM", dados.numeroOM);
 
   setText("temperaturaAmbiente", dados.temperaturaAmbiente + "°C");
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("rugosidadeSuperficie", dados.rugosidadeSuperficie) + "μm";
   setText("temperaturaPontoOrvalho", dados.temperaturaOrvalho + "°C");
   setText("umidadeRelativa", dados.umidadeRelativa + "%");
-  setText("espessuraReparo", dados.espessuraReparo + "mm");
+  setText("espessuraReparo", dados.espessuraReparo);
   setText("resumoAtividades", dados.descricao);
 
   // Marcar checkboxes tiposReparo

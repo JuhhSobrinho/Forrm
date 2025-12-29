@@ -8,6 +8,7 @@
             rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
             rel="stylesheet">
+        <link rel="manifest" href="../manifest.json">
         <link rel="stylesheet" href="./styles.css">
         <title>PJ - RDE-COM</title>
         <script defer
@@ -383,7 +384,7 @@
                                 <label for="material"
                                     class="form-label">Comprimento PFP (mm)</label>
                                 <input type="text"
-                                    class="form-control campo-obrigatorio"
+                                    class="form-control"
                                     id="comprimentoPFP" placeholder="Ex: 900mm">
                             </div>
                             <div class="mb-3">
@@ -451,7 +452,7 @@
                                 <label for="material"
                                     class="form-label">Espessura do PFP:</label>
                                 <input type="text"
-                                    class="form-control campo-obrigatorio"
+                                    class="form-control"
                                     id="espessuraPFP" placeholder="Ex: 25mm">
                             </div>
 
@@ -545,10 +546,10 @@
                             <div class="mb-3">
                                 <label for="espessuraReparo"
                                     class="form-label">Espessura do
-                                    Reparo (mm)</label>
-                                <input type="number"
+                                    Reparo</label>
+                                <input type="text"
                                     class="form-control campo-obrigatorio"
-                                    id="espessuraReparo" placeholder="Ex: 6">
+                                    id="espessuraReparo" placeholder="Ex: 6mm">
                             </div>
                         </div>
                     </div>
@@ -590,7 +591,7 @@
                         <div class="col-12 col-md-4">
                             <label for="AposExePfp" class="form-label">Antes de
                                 Execução do PFP</label>
-                            <input class="form-control campo-obrigatorio"
+                            <input class="form-control"
                                 type="file"
                                 id="AposExePfp" accept="image/*">
                         </div>
