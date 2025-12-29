@@ -109,4 +109,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.print();
 
+
+  const element = document.querySelector(".body"); // container que você quer exportar 
+  const opt = {
+    margin: [5, 5, 5, 5],
+    filename: "relatorio.pdf",
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+  }; // gera e abre o PDF automaticamente 
+  html2pdf().set(opt).from(element).outputPdf("bloburl").then(
+    pdfUrl => { window.open(pdfUrl) }
+  )
+
 });
