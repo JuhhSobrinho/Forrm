@@ -1,7 +1,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
 
     <title>Redirecting...</title>
     <style>
@@ -65,16 +65,15 @@
     <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js").then(() => {
-      // espera 2 segundos e redireciona
+      // espera 3 segundos e redireciona
       setTimeout(() => {
         window.location.href = "./view/index.html";
-      }, 2000);
+      }, 3000);
     });
   } else {
-    // fallback se não houver service worker
     setTimeout(() => {
       window.location.href = "./view/index.html";
-    }, 2000);
+    }, 3000);
   }
 </script>
 
