@@ -3,7 +3,7 @@
   --azul-claro: #00d9ff;
   --cinza-escuro: #1e293b;
   --cinza-fundo: #0f172a;
-  --texto-claro: #e2e8f0;
+  --texto-claro: #f1f5f994;
   --texto-escuro: #222;
 }
 
@@ -11,6 +11,10 @@
 body.light-mode {
   background-color: #ffffff;
   color: var(--texto-escuro);
+}
+
+body.light-mode input::placeholder {
+  color: #5e5e5ea6;
 }
 
 body.light-mode .navbar {
@@ -86,6 +90,10 @@ body.dark-mode .form-check-input {
 
 body.dark-mode .form-check-label, body.dark-mode input::placeholder {
   color: var(--texto-claro);
+}
+
+body.dark-mode .form-check-label, body.dark-mode {
+  color: #ffffff;
 }
 
 .titulo-rde {
