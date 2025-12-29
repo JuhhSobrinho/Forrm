@@ -6,7 +6,8 @@ const urlsToCache = [
   "./view/Modelo/rdeStyle.css",
   "./view/styles.css",
   "./controller/main.js",
-  "./controller/rdeCom.js"
+  "./controller/rdeCom.js",
+  "./controller/html2pdf.bundle.min.js",
 ];
 
 self.addEventListener("install", event => {
