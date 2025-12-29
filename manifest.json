@@ -1,7 +1,7 @@
 {
   "name": "Formulário RDE",
   "short_name": "RDE",
-  "start_url": "./index.html",
+  "start_url": "/Forrm/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "rgb(0, 94, 170)",
