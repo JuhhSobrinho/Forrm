@@ -1,9 +1,10 @@
 const CACHE_NAME = "rde-cache-v1";
 const urlsToCache = [
-  "/view/index.html",
-  "/view/Modelo/rdeModelo.html",
-  "/css/style.css",
-  "/js/script.js"
+  "/Forrm/index.html",              // splash
+  "/Forrm/view/index.html",         // formulário
+  "/Forrm/view/Modelo/rdeModelo.html",
+  "/Forrm/css/style.css",
+  "/Forrm/js/script.js"
 ];
 
 self.addEventListener("install", event => {

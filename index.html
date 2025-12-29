@@ -1,9 +1,11 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="refresh" content="2;url=./view/index.html">
-        <title>Redirecting...</title>
-        <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="2;url=./view/index.html">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Redirecting...</title>
+    <style>
   body.splash {
     margin: 0;
     padding: 0;
@@ -53,14 +55,20 @@
   }
 </style>
 
-    </head>
+  </head>
 
-    <body class="splash">
-        <section class="splash-intro">
-            <div class="line-splash"></div>
-            <h1 class="team">TEAM</h1>
-            <div class="line-splash"></div>
-        </section>
-    </body>
+  <body class="splash">
+    <section class="splash-intro">
+      <div class="line-splash"></div>
+      <h1 class="team">TEAM</h1>
+      <div class="line-splash"></div>
+    </section>
+    <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+
+  </body>
 
 </html>
