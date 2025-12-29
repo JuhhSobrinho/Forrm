@@ -4,7 +4,8 @@ const urlsToCache = [
   "/Forrm/view/index.html",         // formulário
   "/Forrm/view/Modelo/rdeModelo.html",
   "/Forrm/css/style.css",
-  "/Forrm/js/script.js"
+  "/Forrm/controller/main.js",
+  "/Forrm/controller/rdeCom.js"
 ];
 
 self.addEventListener("install", event => {
