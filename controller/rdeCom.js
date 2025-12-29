@@ -118,8 +118,5 @@ document.addEventListener("DOMContentLoaded", () => {
     html2canvas: { scale: 2, useCORS: true },
     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
   }; // gera e abre o PDF automaticamente 
-  html2pdf().set(opt).from(element).outputPdf("bloburl").then(
-    pdfUrl => { window.open(pdfUrl) }
-  )
-
+  html2pdf().set(opt).from(element).save();
 });
