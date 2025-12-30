@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element.classList.add("pdf-export");
 
     const opt = {
+      margin: [0, 0, 0, 0],
       filename: `${dados.local + dados.tag}.pdf`,
       image: { type: "jpeg", quality: 0.98 }
     };
