@@ -250,44 +250,6 @@ p {
 
 
 
-.pdf-export {
-    width: 210mm;
-    padding: 5mm;
-    margin: 0;
-}
-
-.pdf-export header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 30px;
-    border-top: 4px solid var(--cor-destaque);
-}
-
-.pdf-export .pagina {
-    padding: 10px;
-    border: 4px solid var(--cor-destaque);
-    box-sizing: border-box;
-}
-
-.pdf-export .tbl-fotos-execucao {
-    page-break-after: always;
-}
-
-.pdf-export .team {
-    background-color: var(--cor-destaque) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-}
-
-.pdf-export .titulo-tabela-dados {
-    border: 2px solid var(--cor-destaque) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-}
-
-
 @media print {
     @page {
         size: A4;
