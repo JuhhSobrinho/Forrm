@@ -2,7 +2,7 @@ const CACHE_NAME = "rde-cache-v1";
 const urlsToCache = [
   "./index.html",              
   "./view/index.html",         
-  "./view/Modelo/rdeModelo.html",
+  "./view/Modelo/rde-modelo.html",
   "./view/Modelo/rdeStyle.css",
   "./view/styles.css",
   "./controller/main.js",

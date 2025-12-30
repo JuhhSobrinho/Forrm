@@ -274,6 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Salva e redireciona
         localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
-        window.open("../view/Modelo/rdeModelo.html", "_blank");
+        window.open("../view/Modelo/rde-modelo.html", "_blank");
     });
 });
