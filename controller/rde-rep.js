@@ -77,6 +77,25 @@ document.addEventListener("DOMContentLoaded", () => {
   setImage("fotoDepois", dados.fotoDepoisBase64);
 
 
-  window.print();
+  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+  if (!isMobile) {
+    // 👉 Desktop: imprime direto
+    window.print();
+  } else {
+    // 👉 Mobile/PWA: gera PDF automaticamente
+    const element = document.querySelector(".body"); // ajuste para o container correto
+
+    const opt = {
+      margin: [5, 5, 5, 5],
+      filename: "relatorio.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+    };
+
+    html2pdf().set(opt).from(element).save();
+
+  }
 
 });
