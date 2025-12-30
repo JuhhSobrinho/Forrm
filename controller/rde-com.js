@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const opt = {
       margin: [0, 0, 0, 0],
       filename: `${dados.local + dados.tag}.pdf`,
+      jsPDF: { unit: "pt", format: "a4", orientation: "portrait" },
       image: { type: "jpeg", quality: 0.98 }
     };
 
