@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const geoSelecionados = document.querySelectorAll('input[name="tipoGeo"]:checked');
         const todosGeo = document.querySelectorAll('input[name="tipoGeo"]');
 
-        if (geoSelecionados.length !== 1) {
+        if (geoSelecionados.length < 1 || geoSelecionados.length > 2) {
             alert("Selecione exatamente uma geometria de reparo.");
             todosGeo.forEach(cb => cb.parentElement.style.border = "2px solid red");
             geoSelecionados.forEach(cb => cb.parentElement.style.border = "none");

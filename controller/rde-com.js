@@ -111,14 +111,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!isMobile) {
     // 👉 Desktop: imprime direto
+    document.title = dados.local + dados.tag;
     window.print();
+
   } else {
     // 👉 Mobile/PWA: gera PDF automaticamente
     const element = document.body; // ajuste para o container correto
+    element.classList.add("pdf-export");
 
     const opt = {
-      margin: [5, 5, 5, 5],
-      filename: "relatorio.pdf",
+      filename: `${dados.local + dados.tag}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
