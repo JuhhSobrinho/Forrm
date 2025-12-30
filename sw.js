@@ -7,11 +7,7 @@ const urlsToCache = [
   "./view/styles.css",
   "./controller/main.js",
   "./controller/rde-com.js",
-  "./controller/html2pdf.bundle.min.js",
-  "./controller/rde-rep.js",
-  "./controller/controller.js",
-  "./view/index-reparo.html",
-  "./view/modelo/rde-reparo.html",
+  "./controller/html2pdf.bundle.min.js"
 ];
 
 self.addEventListener("install", event => {
