@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.print();
   } else {
     // 👉 Mobile/PWA: gera PDF automaticamente
-    const element = document.querySelector(".body"); // ajuste para o container correto
+    const element = document.body; // ajuste para o container correto
 
     const opt = {
       margin: [5, 5, 5, 5],
