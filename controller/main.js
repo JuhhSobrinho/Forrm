@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Impede que o navegador mostre o prompt automático
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Mostra o botão no header
+        const btnInstall = document.getElementById('btnInstallPwa');
+        if (btnInstall) {
+            btnInstall.style.display = 'inline-block';
+        }
+    });
+
+    document.getElementById('btnInstallPwa').addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); // abre o prompt de instalação
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`Usuário escolheu: ${outcome}`);
+            deferredPrompt = null; // limpa referência
+        }
+    });
+
+
     const toggleLink = document.getElementById("toggleTheme");
     const form = document.getElementById("formRelatorio");
 
