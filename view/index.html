@@ -685,12 +685,31 @@
         <!-- jsPDF -->
 
         <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("../sw.js")
-      .then(reg => console.log("Service Worker registrado:", reg))
-      .catch(err => console.error("Erro ao registrar SW:", err));
-  }
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Impede o prompt automático
+    e.preventDefault();
+    // Guarda o evento para usar depois
+    deferredPrompt = e;
+
+    // Mostra o botão de instalar
+    document.getElementById('btnInstallPwa').style.display = 'block';
+
+    // Se quiser disparar a notificação logo de cara:
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Usuário aceitou instalar');
+      } else {
+        console.log('Usuário recusou instalar');
+      }
+      deferredPrompt = null;
+    });
+  });
 </script>
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
