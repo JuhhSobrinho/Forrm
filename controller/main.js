@@ -1,27 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     let deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Impede que o navegador mostre o prompt automático
+    window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         deferredPrompt = e;
 
-        // Mostra o botão no header
-        const btnInstall = document.getElementById('btnInstallPwa');
-        if (btnInstall) {
-            btnInstall.style.display = 'inline-block';
-        }
+        // 👉 Tenta disparar automaticamente
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+                console.log("Usuário aceitou instalar (auto-prompt)");
+                deferredPrompt = null;
+            } else {
+                console.log("Usuário recusou instalar (auto-prompt)");
+                // 👉 Se recusou, mostra o botão como fallback
+                const btnInstall = document.getElementById("btnInstallPwa");
+                if (btnInstall) {
+                    btnInstall.style.display = "inline-block";
+                }
+            }
+        });
     });
 
-    document.getElementById('btnInstallPwa').addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt(); // abre o prompt de instalação
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log(`Usuário escolheu: ${outcome}`);
-            deferredPrompt = null; // limpa referência
-        }
-    });
+    // 👉 Botão de fallback
+    const btnInstall = document.getElementById("btnInstallPwa");
+    if (btnInstall) {
+        btnInstall.addEventListener("click", async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`Usuário escolheu pelo botão: ${outcome}`);
+                deferredPrompt = null;
+            }
+        });
+    }
+
+
 
 
     const toggleLink = document.getElementById("toggleTheme");
