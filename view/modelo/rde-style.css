@@ -4,7 +4,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 10mm;
+    margin: 5mm;
     font-size: 12pt;
     height: auto;
 }
@@ -243,6 +243,7 @@ p {
 }
 
 .pagina {
+    margin: 5mm;
     padding: 10px;
     box-sizing: border-box;
     border: 4px solid var(--cor-destaque);
@@ -275,11 +276,6 @@ p {
 /* fontes menores só no PDF mobile */
 .pdf-mobile {
     font-size: 10pt !important;
-}
-
-
-#pg-1{
-    padding-top: 40px;
 }
 
 
