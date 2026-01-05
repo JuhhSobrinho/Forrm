@@ -261,6 +261,10 @@ p {
     font-size: 8pt !important;
 }
 
+.pdf-mobile #anotacaoGerais {
+    height: 40vh;
+}
+
 .pdf-mobile .pdf-header-repeat {
     text-align: center;
     border-bottom: 2px solid var(--cor-destaque);
@@ -273,6 +277,10 @@ p {
     font-size: 10pt !important;
 }
 
+
+#pg-1{
+    padding-top: 40px;
+}
 
 
 @media print {
