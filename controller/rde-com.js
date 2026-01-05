@@ -116,26 +116,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   } else {
     // 👉 Mobile/PWA: gera PDF automaticamente
-    const element = document.body; // ajuste para o container correto
-
-    // adiciona classe só no mobile
+    const element = document.body;
     element.classList.add("pdf-export", "pdf-mobile");
 
-    // opcional: duplicar cabeçalho em pontos estratégicos
-    const headerClone = document.querySelector("header").cloneNode(true);
-    headerClone.classList.add("pdf-header-repeat");
-    element.insertBefore(headerClone, element.firstChild);
+    // pega o header original
+    const header = document.querySelector("header");
+    if (header) {
+      // clona o header
+      const headerClone = header.cloneNode(true);
+
+      // insere no início da div .pagina#pg-1
+      const pagina1 = document.querySelector("#pg-1");
+      if (pagina1) {
+        pagina1.insertBefore(headerClone, pagina1.firstChild);
+      }
+    }
 
     const opt = {
       margin: [0, 0, 0, 0],
       filename: `${dados.local + dados.tag}.pdf`,
       jsPDF: { unit: "pt", format: [650, 950], orientation: "portrait" },
-      html2canvas: { scale: 2 }, // aumenta a resolução e mantém proporção
+      html2canvas: { scale: 2 },
       image: { type: "jpeg", quality: 0.98 }
     };
 
     html2pdf().set(opt).from(element).save();
   }
+
 
 
 });
