@@ -122,8 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const opt = {
       margin: [0, 0, 0, 0],
       filename: `${dados.local + dados.tag}.pdf`,
-      jsPDF: { unit: "pt", format: [595, 842], orientation: "portrait" },
-      html2canvas: { scale: 0.8 }, // aumenta a resolução e mantém proporção
+      jsPDF: { unit: "pt", format: [650, 950], orientation: "portrait" },
+      html2canvas: { scale: 1.2 }, // aumenta a resolução e mantém proporção
       image: { type: "jpeg", quality: 0.98 }
     };
 
