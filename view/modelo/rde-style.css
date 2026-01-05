@@ -269,8 +269,8 @@ p {
 .pdf-mobile .pdf-header-repeat {
     text-align: center;
     border-bottom: 2px solid var(--cor-destaque);
-    margin-bottom: 10px;
-    padding-bottom: 5px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 /* fontes menores só no PDF mobile */
