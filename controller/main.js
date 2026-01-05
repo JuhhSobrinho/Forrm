@@ -1,39 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let deferredPrompt;
+  let deferredPrompt;
 
-    window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
 
-        // 👉 Tenta disparar automaticamente
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === "accepted") {
-                console.log("Usuário aceitou instalar (auto-prompt)");
-                deferredPrompt = null;
-            } else {
-                console.log("Usuário recusou instalar (auto-prompt)");
-                // 👉 Se recusou, mostra o botão como fallback
-                const btnInstall = document.getElementById("btnInstallPwa");
-                if (btnInstall) {
-                    btnInstall.style.display = "inline-block";
-                }
-            }
-        });
+    // 👉 Tenta disparar automaticamente
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("Usuário aceitou instalar (auto-prompt)");
+        deferredPrompt = null;
+      } else {
+        console.log("Usuário recusou instalar (auto-prompt)");
+        // 👉 Se recusou, mostra o botão como fallback
+        const btnInstall = document.getElementById("btnInstallPwa");
+        if (btnInstall) {
+          btnInstall.style.display = "inline-block";
+        }
+      }
     });
+  });
 
-    // 👉 Botão de fallback
-    const btnInstall = document.getElementById("btnInstallPwa");
-    if (btnInstall) {
-        btnInstall.addEventListener("click", async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log(`Usuário escolheu pelo botão: ${outcome}`);
-                deferredPrompt = null;
-            }
-        });
-    }
+  // 👉 Botão de fallback
+  const btnInstall = document.getElementById("btnInstallPwa");
+  if (btnInstall) {
+    btnInstall.addEventListener("click", async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Usuário escolheu pelo botão: ${outcome}`);
+        deferredPrompt = null;
+      }
+    });
+  }
 
 
 
