@@ -278,6 +278,10 @@ p {
     font-size: 10pt !important;
 }
 
+.pdf-mobile #pg-1 {
+    margin-top: 20mm;
+}
+
 
 @media print {
     @page {
