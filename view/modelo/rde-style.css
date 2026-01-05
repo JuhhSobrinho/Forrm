@@ -263,7 +263,7 @@ p {
 }
 
 .pdf-mobile #anotacaoGerais {
-    height: 40vh;
+    height: 35vh;
 }
 
 .pdf-mobile .pdf-header-repeat {
@@ -280,8 +280,6 @@ p {
 
 .pdf-mobile #pg-1 {
     margin-top: 10mm;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
 }
 
 
