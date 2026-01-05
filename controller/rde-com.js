@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       margin: [0, 0, 0, 0],
       filename: `${dados.local + dados.tag}.pdf`,
       jsPDF: { unit: "pt", format: "a4", orientation: "portrait" },
-      html2canvas: { scale: 2 }, // aumenta a resolução e mantém proporção
+      html2canvas: { scale: 4 }, // aumenta a resolução e mantém proporção
       image: { type: "jpeg", quality: 0.98 }
     };
 
