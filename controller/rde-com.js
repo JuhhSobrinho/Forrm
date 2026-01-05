@@ -117,7 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     // 👉 Mobile/PWA: gera PDF automaticamente
     const element = document.body; // ajuste para o container correto
-    element.classList.add("pdf-export");
+
+    // adiciona classe só no mobile
+    element.classList.add("pdf-export", "pdf-mobile");
+
+    // opcional: duplicar cabeçalho em pontos estratégicos
+    const headerClone = document.querySelector("header").cloneNode(true);
+    headerClone.classList.add("pdf-header-repeat");
+    element.insertBefore(headerClone, element.firstChild);
 
     const opt = {
       margin: [0, 0, 0, 0],
@@ -127,9 +134,8 @@ document.addEventListener("DOMContentLoaded", () => {
       image: { type: "jpeg", quality: 0.98 }
     };
 
-
     html2pdf().set(opt).from(element).save();
-
   }
+
 
 });

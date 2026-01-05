@@ -182,7 +182,7 @@ th,
 }
 
 #resumoAtividades {
-    height: 100px;             
+    height: 100px;
     word-break: break-word;
     line-height: 1.4;
     text-align: justify;
@@ -249,14 +249,32 @@ p {
 }
 
 
-.pdf-export th{
-  font-size: 12pt !important;
+.pdf-export th {
+    font-size: 12pt !important;
 }
+
 .pdf-export .campo-dados {
-  font-size: 10pt !important;
+    font-size: 10pt !important;
 }
+
 .pdf-export p-local {
-  font-size: 8pt !important;
+    font-size: 8pt !important;
+}
+
+.pdf-mobile .pdf-header-repeat {
+    text-align: center;
+    border-bottom: 2px solid var(--cor-destaque);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+/* fontes menores só no PDF mobile */
+.pdf-mobile {
+    font-size: 10pt !important;
+}
+
+.pdf-mobile h1 {
+    font-size: 14pt !important;
 }
 
 
