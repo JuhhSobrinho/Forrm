@@ -62,18 +62,9 @@
       <div class="line-splash"></div>
     </section>
     <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js").then(() => {
-      // espera 3 segundos e redireciona
-      setTimeout(() => {
-        window.location.href = "./view/index.html";
-      }, 3000);
-    });
-  } else {
     setTimeout(() => {
       window.location.href = "./view/index.html";
     }, 3000);
-  }
 </script>
 
   </body>
