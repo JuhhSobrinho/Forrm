@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   } else {
     // 👉 Mobile/PWA: gera PDF automaticamente
-    const element = document.body;
+    const element = document.querySelector("#pg-1, #pg-2");
     element.classList.add("pdf-export", "pdf-mobile");
 
     // pega o header original
