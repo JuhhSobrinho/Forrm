@@ -280,7 +280,7 @@ p {
 
 .pdf-mobile #pg-1 {
     margin-top: 10mm;
-    margin-bottom: 0mm;
+    margin-bottom: 0 !important;
 }
 
 
