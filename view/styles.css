@@ -26,6 +26,21 @@
   filter: invert(1);
 }
 
+.toast-link {
+    color: #00ffcc;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.toast-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+
+
+
+
 
 /* Tema claro */
 body.light-mode {
