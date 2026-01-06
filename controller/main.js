@@ -3,74 +3,98 @@ document.addEventListener("DOMContentLoaded", () => {
        PWA - Botão fixo + Toast lembrete
        =============================== */
 
-    let deferredPrompt = null;
+let deferredPrompt = null;
+let waitingInstallFromToast = false;
 
-    const ONE_DAY = 1000 * 60 * 60 * 24;
+const ONE_DAY = 1000 * 60 * 60 * 24;
 
-    // Detecta se o app já está instalado
-    function isAppInstalled() {
-        return window.matchMedia('(display-mode: standalone)').matches
-            || window.navigator.standalone === true;
-    }
+// Detecta se o app já está instalado
+function isAppInstalled() {
+    return window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone === true;
+}
 
-    // Regra: mostrar toast no máximo 1x por dia
-    function shouldShowInstallToast() {
-        if (isAppInstalled()) return false;
+// Regra: mostrar toast no máximo 1x por dia
+function shouldShowInstallToast() {
+    if (isAppInstalled()) return false;
 
-        const lastShow = localStorage.getItem("install_toast_last_show");
-        if (!lastShow) return true;
+    const lastShow = localStorage.getItem("install_toast_last_show");
+    if (!lastShow) return true;
 
-        return (Date.now() - Number(lastShow)) > ONE_DAY;
-    }
+    return (Date.now() - Number(lastShow)) > ONE_DAY;
+}
 
-    // Mostra o toast (só lembrete visual)
-    function showInstallToast() {
-        const toastEl = document.getElementById("installToast");
-        if (!toastEl) return;
+// Mostra o toast (só lembrete visual)
+function showInstallToast() {
+    const toastEl = document.getElementById("installToast");
+    if (!toastEl) return;
 
-        localStorage.setItem("install_toast_last_show", Date.now());
+    localStorage.setItem("install_toast_last_show", Date.now());
 
-        const toast = new bootstrap.Toast(toastEl, {
-            autohide: false
-        });
-        toast.show();
-    }
-
-    // Captura o evento do navegador (quando existir)
-    window.addEventListener("beforeinstallprompt", (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-
-        if (shouldShowInstallToast()) {
-            setTimeout(showInstallToast, 4000);
-        }
+    const toast = new bootstrap.Toast(toastEl, {
+        autohide: false
     });
+    toast.show();
+}
 
-    // BOTÃO FIXO "INSTALAR APP" (sempre visível)
-    const installBtn = document.getElementById("installBtn");
+// Captura o evento do navegador (quando existir)
+window.addEventListener("beforeinstallprompt", async (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
 
-    installBtn?.addEventListener("click", async () => {
-        if (!deferredPrompt) {
-            alert("Instalação indisponível no momento.");
-            return;
-        }
-
+    // Se o usuário clicou no toast antes do prompt existir
+    if (waitingInstallFromToast) {
         deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
+        waitingInstallFromToast = false;
+    }
 
-        if (choice.outcome === "accepted") {
-            localStorage.setItem("pwa_installed", "true");
-        }
+    if (shouldShowInstallToast()) {
+        setTimeout(showInstallToast, 4000);
+    }
 
-        deferredPrompt = null;
-    });
+    const choice = await deferredPrompt.userChoice;
 
-    // Fechar toast corretamente
-    document.getElementById("closeInstallToast")?.addEventListener("click", () => {
-        const toastEl = document.getElementById("installToast");
-        const toast = bootstrap.Toast.getInstance(toastEl);
-        toast?.hide();
-    });
+    if (choice.outcome === "accepted") {
+        localStorage.setItem("pwa_installed", "true");
+    }
+
+    deferredPrompt = null;
+});
+
+// BOTÃO FIXO "INSTALAR APP"
+const installBtn = document.getElementById("installBtn");
+
+installBtn?.addEventListener("click", async () => {
+    if (!deferredPrompt) {
+        alert("Instalação indisponível no momento.");
+        return;
+    }
+
+    deferredPrompt.prompt();
+});
+
+// BOTÃO DO TOAST
+const toastInstallBtn = document.getElementById("toastInstallBtn");
+
+toastInstallBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Prompt ainda não existe → espera
+    if (!deferredPrompt) {
+        waitingInstallFromToast = true;
+        toastInstallBtn.innerText = "Preparando instalação...";
+        return;
+    }
+
+    deferredPrompt.prompt();
+});
+
+// Fechar toast corretamente
+document.getElementById("closeInstallToast")?.addEventListener("click", () => {
+    const toastEl = document.getElementById("installToast");
+    const toast = bootstrap.Toast.getInstance(toastEl);
+    toast?.hide();
+});
 
 
 
