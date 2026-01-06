@@ -1,29 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let deferredPrompt;
+    let deferredPrompt = null;
+    const btnInstall = document.getElementById("btnInstallPwa");
 
+    // Botão SEMPRE visível
+    btnInstall.style.display = "inline-block";
+
+    // Captura do evento (quando existir)
     window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         deferredPrompt = e;
+    });
 
-        const btnInstall = document.getElementById("btnInstallPwa");
-        if (btnInstall) {
-            btnInstall.style.display = "inline-block";
+    // Clique no botão
+    btnInstall.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        if (deferredPrompt) {
+            // Navegador permite prompt
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log("Resultado instalação:", outcome);
+            deferredPrompt = null;
+        } else {
+            // Fallback universal
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                alert(
+                    "Para instalar no iPhone:\n" +
+                    "Toque em Compartilhar ⬆️\n" +
+                    "e escolha 'Adicionar à Tela de Início'"
+                );
+            } else {
+                alert(
+                    "Para instalar:\n" +
+                    "Abra o menu do navegador ⋮\n" +
+                    "e toque em 'Adicionar à tela inicial'"
+                );
+            }
         }
     });
 
-    const btnInstall = document.getElementById("btnInstallPwa");
-    if (btnInstall) {
-        btnInstall.addEventListener("click", async () => {
-            if (!deferredPrompt) return;
-
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-
-            console.log("Resultado da instalação:", outcome);
-            deferredPrompt = null;
-            btnInstall.style.display = "none";
-        });
-    }
 
 
 
