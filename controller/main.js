@@ -1,43 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
     let deferredPrompt = null;
-    const btnInstall = document.getElementById("btnInstallPwa");
 
-    // Botão SEMPRE visível
-    btnInstall.style.display = "inline-block";
+    const ONE_DAY = 1000 * 60 * 60 * 24;
 
-    // Captura do evento (quando existir)
+    function isAppInstalled() {
+        return window.matchMedia('(display-mode: standalone)').matches
+            || window.navigator.standalone === true;
+    }
+
+    function shouldShowInstallToast() {
+        if (isAppInstalled()) return false;
+
+        const lastShow = localStorage.getItem("install_toast_last_show");
+        if (!lastShow) return true;
+
+        return (Date.now() - Number(lastShow)) > ONE_DAY;
+    }
+
+    function showInstallToast() {
+        const toastEl = document.getElementById("installToast");
+        if (!toastEl) return;
+
+        localStorage.setItem("install_toast_last_show", Date.now());
+
+        const toast = new bootstrap.Toast(toastEl, {
+            autohide: false
+        });
+        toast.show();
+    }
+
+    // captura o evento do PWA
     window.addEventListener("beforeinstallprompt", (e) => {
         e.preventDefault();
         deferredPrompt = e;
-    });
 
-    // Clique no botão
-    btnInstall.addEventListener("click", async (e) => {
-        e.preventDefault();
-
-        if (deferredPrompt) {
-            // Navegador permite prompt
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log("Resultado instalação:", outcome);
-            deferredPrompt = null;
-        } else {
-            // Fallback universal
-            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                alert(
-                    "Para instalar no iPhone:\n" +
-                    "Toque em Compartilhar ⬆️\n" +
-                    "e escolha 'Adicionar à Tela de Início'"
-                );
-            } else {
-                alert(
-                    "Para instalar:\n" +
-                    "Abra o menu do navegador ⋮\n" +
-                    "e toque em 'Adicionar à tela inicial'"
-                );
-            }
+        if (shouldShowInstallToast()) {
+            setTimeout(showInstallToast, 3000);
         }
     });
+
+    // botão instalar
+    document.getElementById("toastInstallBtn")?.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        if (!deferredPrompt) return;
+
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+
+        if (choice.outcome === "accepted") {
+            localStorage.setItem("pwa_installed", "true");
+        }
+
+        deferredPrompt = null;
+    });
+
+    // fechar toast
+    document.getElementById("closeInstallToast")?.addEventListener("click", () => {
+        document.getElementById("installToast")?.classList.remove("show");
+    });
+
 
 
 
