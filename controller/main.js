@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // BOTÃO FIXO "INSTALAR APP" (sempre visível)
-    const installBtn = document.getElementById("installBtn");
+    const installBtn = document.querySelector(".installBtn");
 
     installBtn?.addEventListener("click", async () => {
         if (!deferredPrompt) {
