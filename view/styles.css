@@ -7,6 +7,26 @@
   --texto-escuro: #222;
 }
 
+
+.toast-install {
+  background-color: var(--cor-destaque);
+  /* sua cor */
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .25);
+}
+
+.toast-install .toast-header {
+  background: transparent;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+.toast-install .btn-close {
+  filter: invert(1);
+}
+
+
 /* Tema claro */
 body.light-mode {
   background-color: #ffffff;
@@ -88,26 +108,30 @@ body.dark-mode .form-check-input {
   border: 1px solid var(--azul-claro);
 }
 
-body.dark-mode .form-check-label, body.dark-mode input::placeholder {
+body.dark-mode .form-check-label,
+body.dark-mode input::placeholder {
   color: var(--texto-claro);
 }
 
-body.dark-mode .form-check-label, body.dark-mode {
+body.dark-mode .form-check-label,
+body.dark-mode {
   color: #ffffff;
 }
 
 .titulo-rde {
   font-size: 2rem;
   font-weight: bold;
-  color: #007BFF; /* azul vibrante */
+  color: #007BFF;
+  /* azul vibrante */
   border-left: 6px solid #007BFF;
   padding-left: 15px;
   margin-bottom: 25px;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f8ff; /* azul clarinho */
+  background-color: #f0f8ff;
+  /* azul clarinho */
   border-radius: 0px 0px 5px 5px;
   padding: 10px 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -152,16 +176,22 @@ body.dark-mode .form-check-label, body.dark-mode {
   animation: fadeIn 0.5s ease-in-out forwards;
 }
 
-.titulo-resumo{
+.titulo-resumo {
   font-size: 16px;
   padding: 12px;
 }
 
-.col-2, .col-8{
+.col-2,
+.col-8 {
   padding: 4px
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
