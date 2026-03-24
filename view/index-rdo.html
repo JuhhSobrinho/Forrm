@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="../manifest.json">
+
+        <link rel="shortcut icon" href="../icons/tisi.png" type="image/x-icon">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css">
+        <title>PJ - RDE-COM</title>
+        <script defer
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+        <!-- Example Code Start-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">TISI TEAM</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page"
+                            href="./index-rdo.html">Form RDO</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="./index.html">Form RDE-Composito</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="./index-reparo.html">Form RDE-Reparo</a>
+                        <a class="nav-link" href="#" id="toggleTheme">Ir para
+                            Modo Escuro</a>
+                        <a class="nav-link" href="#" id="installBtn">📲 Instalar
+                            app</a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="installToast"
+                class="toast toast-install"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">📲 Instale o app</strong>
+                    <button type="button" class="btn-close"
+                        id="closeInstallToast"></button>
+                </div>
+                <div class="toast-body">
+                    Tenha acesso mais rápido e offline 🚀
+                    <br>
+                    <a href="#" id="toastInstallBtn" class="toast-link">👉
+                        Clique aqui para Instalar</a>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="titulo-rde">RDO – Relatório Diario de Operações</h1>
+        <form id="formRelatorio">
+
+            <div class="row g-3 mb-3">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="cliente" class="form-label">Numero
+                            RDO</label>
+                        <input type="number"
+                            class="form-control campo-obrigatorio"
+                            id="nrde"
+                            placeholder="Ex: 01">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emissor" class="form-label">Emitido
+                            Por</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="emitido"
+                            placeholder="Ex: Nome do Emissor">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="revisor" class="form-label">Revisado
+                            Por</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="revisado"
+                            placeholder="Ex: Nome do Revisador">
+                    </div>
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date"
+                            class="form-control campo-obrigatorio" id="data">
+                    </div>
+                </div>
+
+            </div>
+            <!-- Cliente e Local -->
+            <div class="row g-3 mb-3">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="cliente" class="form-label">Cliente</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio" id="cliente"
+                            placeholder="Ex: PETROBRAS">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Unidade" class="form-label">Unidade</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio" id="Unidade"
+                            placeholder="Ex: Unidade 1">
+                    </div>
+                </div>
+
+                <!-- Coluna da direita -->
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="local" class="form-label">Local</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio" id="local"
+                            placeholder="Ex: P-74">
+                    </div>
+                    <div class="mb-3">
+                        <label for="osTeam" class="form-label">OS Team</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio" id="osTeam"
+                            placeholder="Ex: 8104-24-0104">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Setor-->
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Setor
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="LRS" id="sto1">
+                                <label class="form-check-label"
+                                    for="sto1">LRS</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="HTS" id="sto2">
+                                <label class="form-check-label"
+                                    for="sto2">HTS</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="FMS" id="sto3">
+                                <label class="form-check-label" for="sto3">T.
+                                    FMS</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="TB" id="sto4">
+                                <label class="form-check-label" name="tipoSetor"
+                                    for="sto4">TB</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="VRS" id="sto5">
+                                <label class="form-check-label"
+                                    for="sto5">VRS</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="CRS" id="sto6">
+                                <label class="form-check-label"
+                                    for="sto6">CRS</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" name="tipoSetor"
+                                    type="checkbox"
+                                    value="EMS" id="sto7">
+                                <label class="form-check-label"
+                                    for="sto7">EMS</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Escopo do Trabalho
+                </div>
+
+                <div class="row mb-3 box-input" id="grupo-escopo01">
+                    <div class="col-2">
+                        <label for="tag01">TAG</label>
+                        <input type="text" class="form-control" id="tag01"
+                            placeholder="insira tag da linha">
+                    </div>
+                    <div class="col-1">
+                        <label for="diam01">Diametro.</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="diam01" placeholder="Ex:2">
+                    </div>
+                    <div class="col-2">
+                        <label for="tipo01">Tipo</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="tipo01"
+                            placeholder="Ex: (Reto, Curva 45, Curva 90, etc)">
+                    </div>
+                    <div class="col-2">
+                        <label for="desc01">Descrição</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="descRep01"
+                            placeholder="Insira oq foi feito">
+                    </div>
+                    <div class="col-2">
+                        <label for="ss01">#SS</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="ss01">
+                    </div>
+                    <div class="col-2">
+                        <label for="fisc01">Fiscalização</label>
+                        <input type="text"
+                            class="form-control campo-obrigatorio"
+                            id="fisc01">
+                    </div>
+                </div>
+
+                <!-- Itens 02 a 06 (inicialmente ocultos) -->
+                <div class="row mb-3 d-none box-input" id="grupo-escopo02">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tag02"></div>
+                    <div class="col-1"><input type="text" class="form-control"
+                            id="diam02"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tipo02"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="descRep02"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="ss02"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="fisc02"></div>
+                </div>
+
+                <div class="row mb-3 d-none box-input" id="grupo-escopo03">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tag03"></div>
+                    <div class="col-1"><input type="text" class="form-control"
+                            id="diam03"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tipo03"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="descRep03"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="ss03"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="fisc03"></div>
+                </div>
+
+                <div class="row mb-3 d-none box-input" id="grupo-escopo04">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tag04"></div>
+                    <div class="col-1"><input type="text" class="form-control"
+                            id="diam04"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tipo04"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="descRep04"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="ss04"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="fisc04"></div>
+                </div>
+
+                <div class="row mb-3 d-none box-input" id="grupo-escopo05">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tag05"></div>
+                    <div class="col-1"><input type="text" class="form-control"
+                            id="diam05"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tipo05"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="descRep05"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="ss05"></div>
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="fisc05"></div>
+                </div>
+
+            </div>
+
+            <!--    HORAS NORMAIS E HORAS EXTRAS    -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    Horas Extras
+                </div>
+
+                <div class="row mb-3 box-input" id="grupo-horas01">
+                    <div class="col-2">
+                        <label for="tec01">Tecnico</label>
+                        <input type="text" class="form-control" id="tec01"
+                            placeholder="insira nome do tecnico">
+                    </div>
+                    <div class="col-1">
+                        <label for="entra01">Entrada</label>
+                        <input type="time"
+                            class="form-control campo-obrigatorio"
+                            id="entra01">
+                    </div>
+                    <div class="col-1">
+                        <label for="pt01">Liberação PT</label>
+                        <input type="time"
+                            class="form-control campo-obrigatorio"
+                            id="pt01">
+                    </div>
+                    <div class="col-3 row">
+                        <div class="col-5"><label
+                                for="almoEntra01">Inicio Almoço</label>
+                            <input type="time"
+                                class="form-control campo-obrigatorio"
+                                id="almoEntra01">
+                        </div>
+
+                        <div class="col-5"><label
+                                for="almoSai01">Final Almoço</label>
+                            <input type="time"
+                                class="form-control campo-obrigatorio"
+                                id="almoSai01">
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <label for="saida01">Saida</label>
+                        <input type="time"
+                            class="form-control campo-obrigatorio"
+                            id="saida01">
+                    </div>
+                    <div class="col-3 row">
+                        <div class="col-5"><label
+                                for="extraEntra01">Inicio Extra</label>
+                            <input type="time"
+                                class="form-control campo-obrigatorio"
+                                id="extraEntra01">
+                        </div>
+
+                        <div class="col-5"><label
+                                for="extraSai01">Final Extra</label>
+                            <input type="time"
+                                class="form-control campo-obrigatorio"
+                                id="extraSai01">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itens 02 a 06 (inicialmente ocultos) -->
+                <div class="row mb-3 d-none box-input" id="grupo-horas02">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tec02"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="entra02"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="pt02"></div>
+
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoEntra02">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoSai02">
+                        </div>
+
+                    </div>
+
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="saida02"></div>
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraEntra02">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraSai02">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-3 d-none box-input" id="grupo-horas03">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tec03"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="entra03"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="pt03"></div>
+
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoEntra03">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoSai03">
+                        </div>
+
+                    </div>
+
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="saida03"></div>
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraEntra03">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraSai03">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-3 d-none box-input" id="grupo-horas04">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tec04"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="entra04"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="pt04"></div>
+
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoEntra04">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoSai04">
+                        </div>
+
+                    </div>
+
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="saida04"></div>
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraEntra04">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraSai04">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-3 d-none box-input" id="grupo-horas05">
+                    <div class="col-2"><input type="text" class="form-control"
+                            id="tec05"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="entra05"></div>
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="pt05"></div>
+
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoEntra05">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="almoSai05">
+                        </div>
+
+                    </div>
+
+                    <div class="col-1"><input type="time" class="form-control"
+                            id="saida05"></div>
+                    <div class="col-3 row">
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraEntra05">
+                        </div>
+                        <div class="col-5">
+                            <input type="time" class="form-control"
+                                id="extraSai05">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <div class="card-header">
+                    <h1 class="titulo-resumo">Resumo das Atividades</h1>
+                </div>
+                <textarea class="form-control" id="descricao" rows="4"
+                    maxlength="300"
+                    placeholder="Ex: Reparo com fibra de carbono
+    Numeração do Reparo/plaqueta: REP-0000"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <div class="card-header">
+                    <h1 class="titulo-resumo">Anotações Gerais</h1>
+                </div>
+                <textarea class="form-control" id="anotacao" rows="4"
+                    maxlength="600"
+                    placeholder=" Descreva nesse campo as dificuldades encontradas e as aplições adotadas"></textarea>
+            </div>
+
+            <!-- Item 01 -->
+            <div class="row mb-3" id="grupo01">
+                <div class="col-2">
+                    <label for="id01">ID</label>
+                    <input type="text" class="form-control" id="id01"
+                        value="01" readonly>
+                </div>
+                <div class="col-2">
+                    <label for="qtd01">Qtd.</label>
+                    <input type="text" class="form-control campo-obrigatorio"
+                        id="qtd01" placeholder="Ex:2">
+                </div>
+                <div class="col-8">
+                    <label for="desc01">Descrição do Material</label>
+                    <input type="text" class="form-control campo-obrigatorio"
+                        id="desc01"
+                        placeholder="Ex: (Fita, Peel Ply, Thinner, etc)">
+                </div>
+            </div>
+
+            <!-- Itens 02 a 06 (inicialmente ocultos) -->
+            <div class="row mb-3 d-none" id="grupo02">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="02" readonly></div>
+                <div class="col-2"><input type="text" class="form-control"
+                        id="qtd02"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc02"></div>
+            </div>
+
+            <div class="row mb-3 d-none" id="grupo03">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="03" readonly></div>
+                <div class="col-2"><input type="text" class="form-control"
+                        id="qtd03"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc03"></div>
+            </div>
+
+            <div class="row mb-3 d-none" id="grupo04">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="04" readonly></div>
+                <div class="col-2"><input type="text" class="form-control"
+                        id="qtd04"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc04"></div>
+            </div>
+
+            <div class="row mb-3 d-none" id="grupo05">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="05" readonly></div>
+                <div class="col-2"><input type="text" class="form-control"
+                        id="qtd05"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc05"></div>
+            </div>
+
+            <div class="row mb-3 d-none" id="grupo06">
+                <div class="col-2"><input type="text" class="form-control"
+                        value="06" readonly></div>
+                <div class="col-2"><input type="text" class="form-control"
+                        id="qtd06"></div>
+                <div class="col-8"><input type="text" class="form-control"
+                        id="desc06"></div>
+            </div>
+
+            <!-- Botão de envio -->
+            <button type="submit" class="btn btn-primary">
+                Gerar Relatório De Execução</button>
+        </form>
+
+        <!-- jsPDF -->
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+        <script type="module" src="../controller/main-rdo.js"></script>
+    </body>
+
+</html>
