@@ -230,8 +230,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const emissor = document.getElementById("emitido").value;
         const revisor = document.getElementById("revisado").value;
 
-        const nrde = document.getElementById("nrde").value;
+        const nrdo = document.getElementById("nrdo").value;
         const cliente = document.getElementById("cliente").value;
+        const unidade = document.getElementById("unidade").value;
         const local = document.getElementById("local").value;
         const data = document.getElementById("data").value;
         const osTeam = document.getElementById("osTeam").value;
@@ -291,12 +292,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Monta objeto final
         const dados = {
+            nrdo,
             emissor,
             revisor,
-            nrde,
-            cliente,
-            local,
             data,
+            cliente,
+            unidade,
+            local,
             osTeam,
             stometriaReparo,
             descricao,
@@ -311,6 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Salva e redireciona
         localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
-        //window.open("../view/modelo/rde-modelo.html", "_blank");
+        window.open("../view/modelo/rdo-modelo.html", "_blank");
     });
 });
