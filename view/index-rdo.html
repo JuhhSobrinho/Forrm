@@ -221,8 +221,9 @@
                 <div class="card-header">
                     Escopo do Trabalho
                 </div>
+                <div class="rdo-card-body">
 
-                <div class="row mb-3 box-input" id="grupo-escopo01">
+                <div class="row mb-3 g-2 rdo-escopo-row" id="grupo-escopo01">
                     <div class="col-2">
                         <label for="tag01">TAG</label>
                         <input type="text" class="form-control" id="tag01"
@@ -241,7 +242,7 @@
                             id="tipo01"
                             placeholder="Ex: (Reto, Curva 45, Curva 90, etc)">
                     </div>
-                    <div class="col-2">
+                    <div class="col-3">
                         <label for="desc01">Descrição</label>
                         <input type="text"
                             class="form-control campo-obrigatorio"
@@ -262,272 +263,155 @@
                     </div>
                 </div>
 
-                <!-- Itens 02 a 06 (inicialmente ocultos) -->
-                <div class="row mb-3 d-none box-input" id="grupo-escopo02">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tag02"></div>
-                    <div class="col-1"><input type="text" class="form-control"
-                            id="diam02"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tipo02"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="descRep02"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="ss02"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="fisc02"></div>
+                <!-- Itens 02 a 05 (inicialmente ocultos) -->
+                <div class="row mb-3 g-2 d-none rdo-escopo-row" id="grupo-escopo02">
+                    <div class="col-2"><input type="text" class="form-control" id="tag02"></div>
+                    <div class="col-1"><input type="text" class="form-control" id="diam02"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="tipo02"></div>
+                    <div class="col-3"><input type="text" class="form-control" id="descRep02"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="ss02"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="fisc02"></div>
                 </div>
 
-                <div class="row mb-3 d-none box-input" id="grupo-escopo03">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tag03"></div>
-                    <div class="col-1"><input type="text" class="form-control"
-                            id="diam03"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tipo03"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="descRep03"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="ss03"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="fisc03"></div>
+                <div class="row mb-3 g-2 d-none rdo-escopo-row" id="grupo-escopo03">
+                    <div class="col-2"><input type="text" class="form-control" id="tag03"></div>
+                    <div class="col-1"><input type="text" class="form-control" id="diam03"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="tipo03"></div>
+                    <div class="col-3"><input type="text" class="form-control" id="descRep03"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="ss03"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="fisc03"></div>
                 </div>
 
-                <div class="row mb-3 d-none box-input" id="grupo-escopo04">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tag04"></div>
-                    <div class="col-1"><input type="text" class="form-control"
-                            id="diam04"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tipo04"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="descRep04"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="ss04"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="fisc04"></div>
+                <div class="row mb-3 g-2 d-none rdo-escopo-row" id="grupo-escopo04">
+                    <div class="col-2"><input type="text" class="form-control" id="tag04"></div>
+                    <div class="col-1"><input type="text" class="form-control" id="diam04"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="tipo04"></div>
+                    <div class="col-3"><input type="text" class="form-control" id="descRep04"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="ss04"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="fisc04"></div>
                 </div>
 
-                <div class="row mb-3 d-none box-input" id="grupo-escopo05">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tag05"></div>
-                    <div class="col-1"><input type="text" class="form-control"
-                            id="diam05"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tipo05"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="descRep05"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="ss05"></div>
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="fisc05"></div>
+                <div class="row mb-3 g-2 d-none rdo-escopo-row" id="grupo-escopo05">
+                    <div class="col-2"><input type="text" class="form-control" id="tag05"></div>
+                    <div class="col-1"><input type="text" class="form-control" id="diam05"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="tipo05"></div>
+                    <div class="col-3"><input type="text" class="form-control" id="descRep05"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="ss05"></div>
+                    <div class="col-2"><input type="text" class="form-control" id="fisc05"></div>
                 </div>
 
+                </div><!-- fim rdo-card-body escopo -->
             </div>
 
             <!--    HORAS NORMAIS E HORAS EXTRAS    -->
             <div class="card mb-4">
                 <div class="card-header">
-                    Horas Extras
+                    Horas Homem
                 </div>
+                <div class="rdo-card-body">
 
-                <div class="row mb-3 box-input" id="grupo-horas01">
+                <div class="row mb-3 g-1 rdo-horas-row" id="grupo-horas01">
                     <div class="col-2">
-                        <label for="tec01">Tecnico</label>
+                        <label for="tec01">Técnico</label>
                         <input type="text" class="form-control" id="tec01"
-                            placeholder="insira nome do tecnico">
+                            placeholder="nome do técnico">
                     </div>
                     <div class="col-1">
                         <label for="entra01">Entrada</label>
-                        <input type="time"
-                            class="form-control campo-obrigatorio"
-                            id="entra01">
+                        <input type="time" class="form-control campo-obrigatorio" id="entra01">
                     </div>
                     <div class="col-1">
-                        <label for="pt01">Liberação PT</label>
-                        <input type="time"
-                            class="form-control campo-obrigatorio"
-                            id="pt01">
+                        <label for="pt01">Lib. PT</label>
+                        <input type="time" class="form-control campo-obrigatorio" id="pt01">
                     </div>
-                    <div class="col-3 row">
-                        <div class="col-5"><label
-                                for="almoEntra01">Inicio Almoço</label>
-                            <input type="time"
-                                class="form-control campo-obrigatorio"
-                                id="almoEntra01">
+                    <div class="col-4 row g-1">
+                        <div class="col-6">
+                            <label for="almoEntra01">Início Almoço</label>
+                            <input type="time" class="form-control campo-obrigatorio" id="almoEntra01">
                         </div>
-
-                        <div class="col-5"><label
-                                for="almoSai01">Final Almoço</label>
-                            <input type="time"
-                                class="form-control campo-obrigatorio"
-                                id="almoSai01">
+                        <div class="col-6">
+                            <label for="almoSai01">Fim Almoço</label>
+                            <input type="time" class="form-control campo-obrigatorio" id="almoSai01">
                         </div>
                     </div>
                     <div class="col-1">
-                        <label for="saida01">Saida</label>
-                        <input type="time"
-                            class="form-control campo-obrigatorio"
-                            id="saida01">
+                        <label for="saida01">Saída</label>
+                        <input type="time" class="form-control campo-obrigatorio" id="saida01">
                     </div>
-                    <div class="col-3 row">
-                        <div class="col-5"><label
-                                for="extraEntra01">Inicio Extra</label>
-                            <input type="time"
-                                class="form-control campo-obrigatorio"
-                                id="extraEntra01">
+                    <div class="col-3 row g-1">
+                        <div class="col-6">
+                            <label for="extraEntra01">Início Extra</label>
+                            <input type="time" class="form-control campo-obrigatorio" id="extraEntra01">
                         </div>
-
-                        <div class="col-5"><label
-                                for="extraSai01">Final Extra</label>
-                            <input type="time"
-                                class="form-control campo-obrigatorio"
-                                id="extraSai01">
+                        <div class="col-6">
+                            <label for="extraSai01">Fim Extra</label>
+                            <input type="time" class="form-control campo-obrigatorio" id="extraSai01">
                         </div>
                     </div>
                 </div>
 
-                <!-- Itens 02 a 06 (inicialmente ocultos) -->
-                <div class="row mb-3 d-none box-input" id="grupo-horas02">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tec02"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="entra02"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="pt02"></div>
-
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoEntra02">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoSai02">
-                        </div>
-
+                <!-- Itens 02 a 05 (inicialmente ocultos) -->
+                <div class="row mb-3 g-1 d-none rdo-horas-row" id="grupo-horas02">
+                    <div class="col-2"><input type="text" class="form-control" id="tec02" title="Técnico"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="entra02" title="Entrada"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="pt02" title="Liberação PT"></div>
+                    <div class="col-4 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="almoEntra02" title="Início Almoço"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="almoSai02" title="Fim Almoço"></div>
                     </div>
-
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="saida02"></div>
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraEntra02">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraSai02">
-                        </div>
-
+                    <div class="col-1"><input type="time" class="form-control" id="saida02" title="Saída"></div>
+                    <div class="col-3 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="extraEntra02" title="Início Extra"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="extraSai02" title="Fim Extra"></div>
                     </div>
                 </div>
 
-                <div class="row mb-3 d-none box-input" id="grupo-horas03">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tec03"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="entra03"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="pt03"></div>
-
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoEntra03">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoSai03">
-                        </div>
-
+                <div class="row mb-3 g-1 d-none rdo-horas-row" id="grupo-horas03">
+                    <div class="col-2"><input type="text" class="form-control" id="tec03" title="Técnico"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="entra03" title="Entrada"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="pt03" title="Liberação PT"></div>
+                    <div class="col-4 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="almoEntra03" title="Início Almoço"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="almoSai03" title="Fim Almoço"></div>
                     </div>
-
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="saida03"></div>
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraEntra03">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraSai03">
-                        </div>
-
+                    <div class="col-1"><input type="time" class="form-control" id="saida03" title="Saída"></div>
+                    <div class="col-3 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="extraEntra03" title="Início Extra"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="extraSai03" title="Fim Extra"></div>
                     </div>
                 </div>
 
-                <div class="row mb-3 d-none box-input" id="grupo-horas04">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tec04"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="entra04"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="pt04"></div>
-
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoEntra04">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoSai04">
-                        </div>
-
+                <div class="row mb-3 g-1 d-none rdo-horas-row" id="grupo-horas04">
+                    <div class="col-2"><input type="text" class="form-control" id="tec04" title="Técnico"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="entra04" title="Entrada"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="pt04" title="Liberação PT"></div>
+                    <div class="col-4 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="almoEntra04" title="Início Almoço"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="almoSai04" title="Fim Almoço"></div>
                     </div>
-
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="saida04"></div>
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraEntra04">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraSai04">
-                        </div>
-
+                    <div class="col-1"><input type="time" class="form-control" id="saida04" title="Saída"></div>
+                    <div class="col-3 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="extraEntra04" title="Início Extra"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="extraSai04" title="Fim Extra"></div>
                     </div>
                 </div>
 
-                <div class="row mb-3 d-none box-input" id="grupo-horas05">
-                    <div class="col-2"><input type="text" class="form-control"
-                            id="tec05"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="entra05"></div>
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="pt05"></div>
-
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoEntra05">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="almoSai05">
-                        </div>
-
+                <div class="row mb-3 g-1 d-none rdo-horas-row" id="grupo-horas05">
+                    <div class="col-2"><input type="text" class="form-control" id="tec05" title="Técnico"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="entra05" title="Entrada"></div>
+                    <div class="col-1"><input type="time" class="form-control" id="pt05" title="Liberação PT"></div>
+                    <div class="col-4 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="almoEntra05" title="Início Almoço"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="almoSai05" title="Fim Almoço"></div>
                     </div>
-
-                    <div class="col-1"><input type="time" class="form-control"
-                            id="saida05"></div>
-                    <div class="col-3 row">
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraEntra05">
-                        </div>
-                        <div class="col-5">
-                            <input type="time" class="form-control"
-                                id="extraSai05">
-                        </div>
-
+                    <div class="col-1"><input type="time" class="form-control" id="saida05" title="Saída"></div>
+                    <div class="col-3 row g-1">
+                        <div class="col-6"><input type="time" class="form-control" id="extraEntra05" title="Início Extra"></div>
+                        <div class="col-6"><input type="time" class="form-control" id="extraSai05" title="Fim Extra"></div>
                     </div>
                 </div>
 
+                </div><!-- fim rdo-card-body horas -->
             </div>
 
             <div class="mb-3">
@@ -627,6 +511,34 @@
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
         <script type="module" src="../controller/main-rdo.js"></script>
+
+        <style>
+            /* ================================================
+               RDO — estilos exclusivos desta página
+               Não interferem em index.html / index-reparo.html
+               ================================================ */
+
+            /* Scroll horizontal no card quando a tela for estreita */
+            .rdo-card-body {
+                overflow-x: auto;
+                padding: 0.75rem 1rem;
+            }
+
+            /* Impede que as colunas quebrem para a linha de baixo */
+            .rdo-escopo-row,
+            .rdo-horas-row {
+                flex-wrap: nowrap;
+            }
+
+            /* Largura mínima garante que os inputs tenham espaço suficiente */
+            .rdo-escopo-row { min-width: 660px; }
+            .rdo-horas-row  { min-width: 820px; }
+
+            /* Inputs de hora ficam estreitos em col-1; garante largura mínima */
+            .rdo-horas-row input[type="time"] {
+                min-width: 90px;
+            }
+        </style>
     </body>
 
 </html>

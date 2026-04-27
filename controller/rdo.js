@@ -1,148 +1,140 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
-
-
-  const dados = JSON.parse(localStorage.getItem("dadosRelatorio"));
-  if (!dados) {
-    alert("Dados não encontrados.");
-    return;
-  }
-
-  // Preencher tabela de materiais (assumindo array de arrays)
-  if (Array.isArray(dados.materiais)) { // Seleciona todas as linhas das duas tabelas de materiais 
-    const linhas = document.querySelectorAll(".tabela-dados-material tbody tr");
-
-    dados.materiais.forEach((mat, i) => {
-
-      if (linhas[i]) {
-        const linha = linhas[i];
-        const tdItem = linha.querySelector(".item");
-        const tdQtd = linha.querySelector(".quantidade");
-        const tdDesc = linha.querySelector(".descricao-material");
-
-        if (tdItem) tdItem.textContent = mat[0] || "";
-        if (tdQtd) tdQtd.textContent = mat[1] || "";
-        if (tdDesc) tdDesc.textContent = mat[2] || "";
-      }
-    });
-  }
-
-
-  const setInputValue = (id, value) => {
-    const el = document.getElementById(id);
-    if (el && "value" in el) el.value = value || "";
-  };
-
-  const setText = (id, value) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = value || "";
-  };
-
-  console.log(dados.nrde);
-
-  setInputValue("emissor", dados.emissor);
-  setInputValue("revisor", dados.revisor);
-
-  setText("tituloRde", "N°" + dados.nrde);
-  setInputValue("cliente", dados.cliente);
-  setInputValue("local", dados.local);
-  setInputValue("data", dados.data);
-  setInputValue("osTeam", dados.osTeam);
-
-  setText("diametro", dados.diametro + '"');
-  setText("tag", dados.tag);
-  setText("material", dados.material);
-  setText("fluido", dados.fluido);
-  setText("comprimento", dados.comprimento);
-
-  setText("kitResimac101", dados.kitResimac101 == "0" ? "N/A" : dados.kitResimac101);
-  setText("comprimentoPFP", dados.comprimentoPFP == "" ? "N/A" : dados.comprimentoPFP);
-  setText("furoNaLinha", dados.furoNaLinha);
-
-  setText("pressaoProjeto", dados.pressaoProjeto);
-  setText("temperaturaProjeto", dados.temperaturaProjeto + "°C");
-  setText("pressaoOperacao", dados.pressaoOperacao);
-  setText("temperaturaOperacao", dados.temperaturaOperacao + "°C");
-  setText("numeroCamadas", dados.camadas);
-
-  setText("kitResimac114", dados.kitResimac114 == "0" ? "N/A" : dados.kitResimac114);
-  setText("espessuraPFP", dados.espessuraPFP == "" ? "N/A" : dados.espessuraPFP);
-  setText("numeroOM", dados.numeroOM);
-
-  setText("temperaturaAmbiente", dados.temperaturaAmbiente + "°C");
-  setText("temperaturaSuperficie", dados.temperaturaSuperficie + "°C");
-  setText("rugosidadeSuperficie", dados.rugosidadeSuperficie) + "μm";
-  setText("temperaturaPontoOrvalho", dados.temperaturaOrvalho + "°C");
-  setText("umidadeRelativa", dados.umidadeRelativa + "%");
-  setText("espessuraReparo", dados.espessuraReparo);
-  setText("resumoAtividades", dados.descricao);
-
-  // Marcar checkboxes tiposReparo
-  if (Array.isArray(dados.tiposReparo)) {
-    const checkboxes = document.querySelectorAll('input[name="tipoReparo"]');
-    checkboxes.forEach(cb => {
-      cb.checked = dados.tiposReparo.includes(cb.value);
-    });
-  }
-
-  // Marcar checkboxes geometriaReparo
-  if (Array.isArray(dados.geometriaReparo)) {
-    const checkboxesGeo = document.querySelectorAll('#geometriaReparo input[type="checkbox"]');
-    checkboxesGeo.forEach(cb => {
-      cb.checked = dados.geometriaReparo.includes(cb.value);
-    });
-  }
-
-  const setImage = (id, src) => {
-    const img = document.getElementById(id);
-    if (img && src) img.src = src;
-  };
-
-  setImage("fotoAntes", dados.fotoAntesBase64);
-  setImage("fotoDepois", dados.fotoDepoisBase64);
-  setImage("fotoAposPfp", dados.fotoAntesPfpBase64);
-
-  setText("anotacaoGerais", dados.anotacao);
-
-
-  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-
-  if (!isMobile) {
-    // 👉 Desktop: imprime direto
-    document.title = dados.local + dados.tag;
-    window.print();
-
-  } else {
-    // 👉 Mobile/PWA: gera PDF automaticamente
-    const element = document.body;
-    element.classList.add("pdf-export", "pdf-mobile");
-
-    // pega o header original
-    const header = document.querySelector("header");
-    if (header) {
-      // clona o header
-      const headerClone = header.cloneNode(true);
-
-      // insere no início da div .pagina#pg-1
-      const pagina1 = document.querySelector("#pg-1");
-      if (pagina1) {
-        pagina1.insertBefore(headerClone, pagina1.firstChild);
-      }
+    const dados = JSON.parse(localStorage.getItem("dadosRelatorio"));
+    if (!dados) {
+        alert("Dados não encontrados. Preencha o formulário primeiro.");
+        return;
     }
 
-    const opt = {
-      margin: [0, 0, 0, 0],
-      filename: `${dados.local + dados.tag}.pdf`,
-      jsPDF: { unit: "pt", format: [650, 950], orientation: "portrait" },
-      html2canvas: { scale: 2 },
-      image: { type: "jpeg", quality: 0.98 }
-    };
+    // ── Cabeçalho ──────────────────────────────────────────────────────────
+    document.getElementById("tituloRdo").textContent = "Nº " + (dados.nrdo || "");
 
-    html2pdf().set(opt).from(element).save();
-  }
+    // ── Informações básicas ─────────────────────────────────────────────────
+    document.getElementById("cliente").textContent   = dados.cliente  || "";
+    document.getElementById("local").textContent     = dados.local    || "";
+    document.getElementById("unidade").textContent   = dados.unidade  || "";
+    document.getElementById("data").textContent      = dados.data     || "";
+    document.getElementById("ssCliente").textContent = dados.osTeam   || "";
 
+    // ── Setor checkboxes ────────────────────────────────────────────────────
+    const setores = Array.isArray(dados.stometriaReparo) ? dados.stometriaReparo : [];
+    document.querySelectorAll(".setor-bloco input[type='checkbox']").forEach(cb => {
+        cb.checked = setores.includes(cb.value);
+    });
 
+    // ── Escopo do Trabalho ──────────────────────────────────────────────────
+    // Cada item: [index, tag, diam, tipo, desc, ss, fisc]
+    const MIN_ROWS = 5;
+    const tbodyEscopo = document.getElementById("tbodyEscopo");
+    const escopoData  = Array.isArray(dados.EscopoDoTrabalho) ? dados.EscopoDoTrabalho : [];
+
+    escopoData.forEach(r => {
+        tbodyEscopo.appendChild(criarLinhaEscopo(r[1], r[2], r[3], r[4], r[5], r[6]));
+    });
+    for (let i = escopoData.length; i < MIN_ROWS; i++) {
+        tbodyEscopo.appendChild(criarLinhaEscopo());
+    }
+
+    // ── Horas Homem ─────────────────────────────────────────────────────────
+    // Cada item: [index, tec, entra, pt, almoEntra, almoSai, saida, extraEntra, extraSai]
+    const tbodyHoras = document.getElementById("tbodyHoras");
+    const horasData  = Array.isArray(dados.horasTrabalhadas) ? dados.horasTrabalhadas : [];
+
+    horasData.forEach((r, idx) => {
+        tbodyHoras.appendChild(criarLinhaHoras(idx + 1, r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8]));
+    });
+    for (let i = horasData.length; i < MIN_ROWS; i++) {
+        tbodyHoras.appendChild(criarLinhaHoras(i + 1));
+    }
+
+    // ── Materiais e Equipamentos ────────────────────────────────────────────
+    // Cada item: [index, qtd, desc]  →  exibe: item | desc | qtd
+    const tbodyMat = document.getElementById("tbodyMat");
+    const matData  = Array.isArray(dados.materiais) ? dados.materiais : [];
+
+    matData.forEach((r, idx) => {
+        tbodyMat.appendChild(criarLinhaMaterial(idx + 1, r[2], r[1]));
+    });
+    for (let i = matData.length; i < MIN_ROWS; i++) {
+        tbodyMat.appendChild(criarLinhaMaterial(i + 1));
+    }
+
+    // ── Comentários Adicionais ──────────────────────────────────────────────
+    const linhasDivs = document.querySelectorAll("#comentarios .comentarios-linha");
+    const linhasTexto = (dados.descricao || "").split("\n").filter(l => l.trim() !== "");
+    linhasTexto.forEach((texto, i) => {
+        if (linhasDivs[i]) linhasDivs[i].textContent = texto;
+    });
+
+    // ── Footer ──────────────────────────────────────────────────────────────
+    const nomeEl = document.getElementById("nomeRepresentante");
+    if (dados.emissor) nomeEl.textContent = dados.emissor;
+
+    // ── Impressão ───────────────────────────────────────────────────────────
+    document.title = `RDO-${dados.nrdo || "01"}_${dados.local || ""}`;
+
+    // iOS (iPhone/iPad) usa window.print() — Safari gerencia via aba de
+    // compartilhamento e produz PDF limpo. html2canvas tem suporte ruim no
+    // WebKit iOS e causa distorção ou falha silenciosa.
+    // Android usa html2pdf que funciona bem no Chrome/WebView.
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+        document.body.classList.add("pdf-export", "pdf-mobile");
+        html2pdf()
+            .set({
+                margin: [0, 0, 0, 0],
+                filename: `RDO-${dados.nrdo || "01"}.pdf`,
+                jsPDF: { unit: "pt", format: [650, 950], orientation: "portrait" },
+                html2canvas: { scale: 2 },
+                image: { type: "jpeg", quality: 0.98 }
+            })
+            .from(document.body)
+            .save();
+    } else {
+        // Desktop e iOS: impressão nativa
+        window.print();
+    }
+
+    // ── Helpers ─────────────────────────────────────────────────────────────
+    function td(text, cls) {
+        const el = document.createElement("td");
+        if (cls) el.className = cls;
+        el.textContent = text || "";
+        return el;
+    }
+
+    function criarLinhaEscopo(tag, diam, tipo, desc, ss, fisc) {
+        const tr = document.createElement("tr");
+        tr.appendChild(td(tag,  "c-tag"));
+        tr.appendChild(td(diam, "c-diam"));
+        tr.appendChild(td(tipo, "c-tipo"));
+        tr.appendChild(td(desc, "c-desc-esc"));
+        tr.appendChild(td(ss,   "c-ss"));
+        tr.appendChild(td(fisc, "c-fisc"));
+        return tr;
+    }
+
+    function criarLinhaHoras(item, tec, entra, pt, almoEntra, almoSai, saida, extraEntra, extraSai) {
+        const tr = document.createElement("tr");
+        tr.appendChild(td(item,       "c-item"));
+        tr.appendChild(td(tec,        "c-tec"));
+        tr.appendChild(td(entra,      "c-tempo"));
+        tr.appendChild(td(pt,         "c-tempo"));
+        tr.appendChild(td(almoEntra,  "c-tempo"));
+        tr.appendChild(td(almoSai,    "c-tempo"));
+        tr.appendChild(td(saida,      "c-tempo"));
+        tr.appendChild(td(extraEntra, "c-tempo extras"));
+        tr.appendChild(td(extraSai,   "c-tempo extras"));
+        return tr;
+    }
+
+    function criarLinhaMaterial(item, desc, qtd) {
+        const tr = document.createElement("tr");
+        tr.appendChild(td(item, "c-item"));
+        tr.appendChild(td(desc, "c-mat-desc"));
+        tr.appendChild(td(qtd,  "c-mat-qtd"));
+        return tr;
+    }
 
 });

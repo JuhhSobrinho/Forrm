@@ -105,10 +105,23 @@ h2 {
     margin-top: 5px;
 }
 
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 5px;
+}
+
+.table-setor{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.setor{
+    width: 60px;
 }
 
 table,

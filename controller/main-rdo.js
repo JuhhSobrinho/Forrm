@@ -139,31 +139,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const tag = document.getElementById(`tag0${i}`);
         const diam = document.getElementById(`diam0${i}`);
         const nextGrupo = document.getElementById(`grupo-escopo0${i + 1}`);
+        if (!tag || !diam || !nextGrupo) continue;
 
-        function mostrarProximo() {
+        const mostrarEscopo = () => {
             if (tag.value.trim() !== "" || diam.value.trim() !== "") {
                 nextGrupo.classList.remove("d-none");
             }
-        }
-        tag.addEventListener("input", mostrarProximo);
-        diam.addEventListener("input", mostrarProximo);
+        };
+        tag.addEventListener("input", mostrarEscopo);
+        diam.addEventListener("input", mostrarEscopo);
     }
-
-
 
     // Mostrar próximo grupo de horas trabalhadas
     for (let i = 1; i <= 5; i++) {
         const tec = document.getElementById(`tec0${i}`);
         const entra = document.getElementById(`entra0${i}`);
         const nextGrupo = document.getElementById(`grupo-horas0${i + 1}`);
-        function mostrarProximo() {
+        if (!tec || !entra || !nextGrupo) continue;
+
+        const mostrarHoras = () => {
             if (tec.value.trim() !== "" || entra.value.trim() !== "") {
                 nextGrupo.classList.remove("d-none");
-            }  
-        }
-        tec.addEventListener("input", mostrarProximo);
-        entra.addEventListener("input", mostrarProximo);
-    }   
+            }
+        };
+        tec.addEventListener("input", mostrarHoras);
+        entra.addEventListener("input", mostrarHoras);
+    }
 
 
     // Mostrar próximo grupo de materiais
@@ -209,14 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        // 3. Validação de stometria
+        // 3. Validação de setor
         const setorSelecionado = document.querySelectorAll('input[name="tipoSetor"]:checked');
         const todosSetor = document.querySelectorAll('input[name="tipoSetor"]');
 
-        if (setorSelecionado.length < 1 || setorSelecionado.length > 2) {
-            alert("Selecione exatamente uma stometria de reparo.");
+        if (setorSelecionado.length < 1) {
+            alert("Selecione ao menos um setor.");
             todosSetor.forEach(cb => cb.parentElement.style.border = "2px solid red");
-            setorSelecionado.forEach(cb => cb.parentElement.style.border = "none");
             return;
         } else {
             todosSetor.forEach(cb => cb.parentElement.style.border = "none");

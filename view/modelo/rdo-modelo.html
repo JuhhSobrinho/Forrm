@@ -1,319 +1,316 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Relatório de Execução</title>
-        <link rel="shortcut icon" href="../../icons/tisi.png" type="image/x-icon">
-        <link rel="stylesheet" href="./rde-style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Diário de Operações</title>
+    <script src="../../controller/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="./rde-style.css">
+    <link rel="shortcut icon" href="../../icons/tisi.png" type="image/x-icon">
+    <style>
+        /* ---- Info fields (Cliente, Local, etc.) ---- */
+        .info-bloco {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: 8px 0 10px 0;
+        }
 
-    <body>
+        .info-linha {
+            display: flex;
+            gap: 20px;
+        }
 
+        .info-campo {
+            display: flex;
+            align-items: baseline;
+            flex: 1;
+            gap: 5px;
+        }
+
+        .info-rotulo {
+            white-space: nowrap;
+            color: var(--cor-destaque);
+            font-weight: bold;
+            font-size: 10.5pt;
+        }
+
+        .info-valor {
+            flex: 1;
+            border-bottom: 1.5px solid #444;
+            font-size: 10pt;
+            padding: 0 2px 1px;
+            min-width: 50px;
+        }
+
+        /* ---- Setor checkboxes ---- */
+        .setor-bloco {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 8px 0 10px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #bbb;
+            justify-content: center;
+        }
+
+        .setor-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10.5pt;
+        }
+
+        .setor-item input[type="checkbox"] {
+            width: 13px;
+            height: 13px;
+            accent-color: var(--cor-destaque);
+            cursor: default;
+        }
+
+        /* ---- Shared table overrides ---- */
+        .tbl-escopo th,
+        .tbl-horas th,
+        .tbl-mat th {
+            text-align: center;
+            font-size: 8.5pt;
+            padding: 3px 4px;
+            background-color: #e8e8e8;
+        }
+
+        .tbl-escopo td,
+        .tbl-horas td,
+        .tbl-mat td {
+            padding: 2px 4px;
+            height: 17px;
+            font-size: 9pt;
+        }
+
+        /* Extras column highlight */
+        .tbl-horas .th-extras {
+            background-color: #d0e4f7;
+        }
+
+        .tbl-horas td.extras {
+            background-color: #eaf3fc;
+        }
+
+        /* ---- Column widths: Escopo ---- */
+        .c-tag      { width: 15%; }
+        .c-diam     { width: 8%;  text-align: center; }
+        .c-tipo     { width: 11%; }
+        .c-desc-esc { width: 38%; }
+        .c-ss       { width: 15%; }
+        .c-fisc     { width: 13%; }
+
+        /* ---- Column widths: Horas ---- */
+        .c-item  { width: 4%;  text-align: center; }
+        .c-tec   { width: 18%; }
+        .c-tempo { width: 8%;  text-align: center; }
+
+        /* ---- Column widths: Materiais ---- */
+        .c-mat-desc { width: 82%; }
+        .c-mat-qtd  { width: 10%; text-align: center; }
+
+        /* ---- Comentários ---- */
+        .comentarios-bloco {
+            padding: 4px 8px 0;
+        }
+
+        .comentarios-linha {
+            border-bottom: 1px solid #bbb;
+            min-height: 21px;
+            padding: 1px 4px;
+            font-size: 9.5pt;
+            line-height: 1.4;
+        }
+
+        /* ---- Assinatura (footer) ---- */
+        footer {
+            margin-top: 80px;
+            padding-top: 16px;
+        }
+
+
+        /* ---- Print overrides ---- */
+        @media print {
+            /* Empurra o conteúdo para baixo do header fixo */
+            .setor-bloco {
+                margin-top: 100px;
+            }
+
+            .setor-item input[type="checkbox"] {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .tbl-horas .th-extras,
+            .tbl-horas td.extras {
+                background-color: #d0e4f7 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .tbl-escopo th,
+            .tbl-horas th,
+            .tbl-mat th {
+                background-color: #e8e8e8 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pagina" id="pg-0">
+
+        <!-- ===== HEADER ===== -->
         <header>
             <div class="titulo-team">
                 <h1 class="team">TEAM</h1>
             </div>
             <div class="descricao-titulo-local-rde">
-                <h1 class="descricao-titulo">TISI do Brasil - Serviçoi
-                    Industriais Ltda.</h1>
-                <p class="p-local">Rua Doutor Luiz Itálico Bocco, 224 N. Sra do
-                    Perpétuo Socorro
-                    / Pindamonhangaba SP CEP 12421-200 / Brasil
-                </p>
+                <h1 class="descricao-titulo">TISI do Brasil - Serviços Industriais Ltda.</h1>
+                <p class="p-local">Rua Doutor Luiz Itálico Bocco, 224 N. Sra do Perpétuo Socorro /
+                    Pindamonhangaba SP CEP 12421-200 / Brasil</p>
                 <div class="titulo-rde-number">
-                    <h1 class="titulo-rde">Relarório de Execução de Serviço <br>
-                        Reparo por
-                        Compósito</h1>
-                    <h1 class="titulo-rde" id="tituloRde">N°01</h1>
+                    <h1 class="titulo-rde">Relatório Diário de Operações</h1>
+                    <h1 class="titulo-rde" id="tituloRdo">Nº 01</h1>
                 </div>
             </div>
         </header>
 
-        <section class="dados-gerais">
-            <div class="dados-gerais-descricao">
-                <div class="dados-gerais">
-                    <label class="label-geral" for="cliente">Cliente:</label>
-                    <input class="input-geral" type="text" id="cliente">
+        <!-- ===== SETOR ===== -->
+        <div class="setor-bloco">
+            <div class="setor-item">
+                <input type="checkbox" id="sLRS" value="LRS">
+                <label for="sLRS">LRS</label>
+            </div>
+            <div class="setor-item">
+                <input type="checkbox" id="sHTS" value="HTS">
+                <label for="sHTS">HTS</label>
+            </div>
+            <div class="setor-item">
+                <input type="checkbox" id="sFMS" value="FMS">
+                <label for="sFMS">FMS</label>
+            </div>
+            <div class="setor-item">
+                <input type="checkbox" id="sTBS" value="TB">
+                <label for="sTBS">TBS</label>
+            </div>
+            <div class="setor-item">
+                <input type="checkbox" id="sVRS" value="VRS">
+                <label for="sVRS">VRS</label>
+            </div>
+            <div class="setor-item">
+                <input type="checkbox" id="sCRS" value="CRS">
+                <label for="sCRS">CRS</label>
+            </div>
+            <div class="setor-item">
+                <input type="checkbox" id="sEMS" value="EMS">
+                <label for="sEMS">EMS</label>
+            </div>
+        </div>
+
+        <!-- ===== INFO BÁSICO ===== -->
+        <div class="info-bloco">
+            <div class="info-linha">
+                <div class="info-campo">
+                    <span class="info-rotulo">Cliente:</span>
+                    <span class="info-valor" id="cliente"></span>
                 </div>
-                <div class="dados-gerais">
-                    <label class="label-geral" for="local">Local:</label>
-                    <input class="input-geral" type="text" id="local">
+                <div class="info-campo">
+                    <span class="info-rotulo">Data:</span>
+                    <span class="info-valor" id="data"></span>
                 </div>
             </div>
-
-            <div class="dados-gerais-descricao">
-                <div class="dados-gerais">
-                    <label class="label-geral" for="data">Data:</label>
-                    <input class="input-geral" type="text" id="data">
+            <div class="info-linha">
+                <div class="info-campo">
+                    <span class="info-rotulo">Local:</span>
+                    <span class="info-valor" id="local"></span>
                 </div>
-                <div class="dados-gerais">
-                    <label class="label-geral" for="osTeam">OS Team:</label>
-                    <input class="input-geral" type="text" id="osTeam">
+                <div class="info-campo">
+                    <span class="info-rotulo">Turno:</span>
+                    <span class="info-valor" id="turno"></span>
                 </div>
             </div>
-        </section>
-
-        <section>
-            <h2 class="titulo-tabela-dados">Escopo do Reparo</h2>
-            <div class="checkbox-list" id="tiposReparo">
-                <table>
-                    <tr>
-                        <th class="tipo-reparo-check-box">
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="Reinjeção" id="reparo1">
-                            <label class="form-check-label"
-                                for="reparo1">Reinjeção</label>
-
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="Reengaxetamento De
-                                Válvula(Valve Packing)" id="reparo2">
-                            <label class="form-check-label"
-                                for="reparo2">Reengaxetamento De
-                                Válvula(Valve Packing)</label>
-
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="Arame(Wire-Wrap)" id="reparo3">
-                            <label class="form-check-label"
-                                for="reparo3">Arame(Wire-Wrap)</label>
-
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="Martelamento(Penning)" id="reparo4">
-                            <label class="form-check-label"
-                                for="reparo4">Martelamento(Penning)</label>
-
-                        </th>
-                    </tr>
-                    <tr>
-                        <th class="tipo-reparo-check-box">
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="Abraçadeira(Clamp)" id="reparo5">
-                            <label class="form-check-label"
-                                for="reparo5">Abraçadeira(Clamp)</label>
-
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="Dispositivo de Enclausuramento
-                                (Enclosure)"
-                                id="reparo6">
-                            <label class="form-check-label"
-                                for="reparo6">Dispositivo de Enclausuramento
-                                (Enclosure)</label>
-                            <input class="form-check-input"
-                                name="tipoReparo" type="checkbox"
-                                value="outros"
-                                id="reparo6">
-                            <label class="form-check-label"
-                                for="reparo6">outros</label>
-                        </th>
-                    </tr>
-                </table>
-
+            <div class="info-linha">
+                <div class="info-campo">
+                    <span class="info-rotulo">Unidade:</span>
+                    <span class="info-valor" id="unidade"></span>
+                </div>
+                <div class="info-campo">
+                    <span class="info-rotulo">SS do Cliente:</span>
+                    <span class="info-valor" id="ssCliente"></span>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <section>
-            <h2 class="titulo-tabela-dados">Geometria do Reparo</h2>
-            <table>
+        <!-- ===== ESCOPO DO TRABALHO ===== -->
+        <h2 class="titulo-tabela-dados">Escopo do Trabalho</h2>
+        <table class="tbl-escopo">
+            <thead>
                 <tr>
-                    <th class="checkbox-list" id="geometriaReparo">
-
-                        <input class="form-check-input" type="checkbox"
-                            value="FLANGE" id="geo1">
-                        <label class="form-check-label"
-                            for="geo1">FLANGE</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="VALVULA" id="geo2">
-                        <label class="form-check-label"
-                            for="geo2">VÁLVULA</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="T.RETO" id="geo3">
-                        <label class="form-check-label" for="geo3">T.
-                            RETO</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="CURVA45" id="geo4">
-                        <label class="form-check-label" for="geo4">CURVA
-                            45°C</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="CURVA90" id="geo5">
-                        <label class="form-check-label" for="geo5">CURVA
-                            90°C</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="TEE" id="geo6">
-                        <label class="form-check-label" for="geo6">TEE</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="REDUÇÃO" id="geo7">
-                        <label class="form-check-label"
-                            for="geo7">REDUÇÃO</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="TANQUE" id="geo8">
-                        <label class="form-check-label"
-                            for="geo8">TANQUE</label>
-
-                        <input class="form-check-input" type="checkbox"
-                            value="OUTROS" id="geo9">
-                        <label class="form-check-label"
-                            for="geo9">OUTROS</label>
-
-                    </th>
+                    <th class="c-tag">TAG</th>
+                    <th class="c-diam">DIÂMETRO</th>
+                    <th class="c-tipo">TIPO</th>
+                    <th class="c-desc-esc">DESCRIÇÃO</th>
+                    <th class="c-ss">#JSS</th>
+                    <th class="c-fisc">FISCALIZAÇÃO</th>
                 </tr>
-            </table>
-        </section>
+            </thead>
+            <tbody id="tbodyEscopo"></tbody>
+        </table>
 
-        <section>
-            <h2 class="titulo-tabela-dados">Dados do Projeto</h2>
-            <div class="tabela-dados-projeto">
-                <table>
-                    <tr>
-                        <th>Diâmetro Equipamento:</th>
-                        <td class="campo-dados" id="diametro"></td>
-                    </tr>
-                    <tr>
-                        <th>TAG Equipamento:</th>
-                        <td class="campo-dados" id="tag"></td>
-                    </tr>
-                    <tr>
-                        <th>Material Equipamento:</th>
-                        <td class="campo-dados" id="material"></td>
-                    </tr>
-                    <tr>
-                        <th>Fluído Operação:</th>
-                        <td class="campo-dados" id="fluido"></td>
-                    </tr>
-                    <tr>
-                        <th>Número da Injeção:</th>
-                        <td class="campo-dados" id="numbInjecao"></td>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <th>Pressão de Projeto:</th>
-                        <td class="campo-dados" id="pressaoProjeto"></td>
-                    </tr>
-                    <tr>
-                        <th>Temperatura de Projeto:</th>
-                        <td class="campo-dados" id="temperaturaProjeto"></td>
-                    </tr>
-                    <tr>
-                        <th>Pressão de Operação:</th>
-                        <td class="campo-dados" id="pressaoOperacao"></td>
-                    </tr>
-                    <tr>
-                        <th>Temperatura de Operação:</th>
-                        <td class="campo-dados" id="temperaturaOperacao"></td>
-                    </tr>
-                    <tr>
-                        <th>Pressão de Injeção:</th>
-                        <td class="campo-dados" id="pressInjecao"></td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="titulo-tabela-dados">Resumo das Atividades</h2>
-            <table>
+        <!-- ===== HORAS HOMEM ===== -->
+        <h2 class="titulo-tabela-dados">Horas Homem</h2>
+        <table class="tbl-horas">
+            <thead>
                 <tr>
-                    <td class="campo-dados" id="resumoAtividades"></td>
+                    <th class="c-item" rowspan="2">Item</th>
+                    <th class="c-tec" rowspan="2">Técnico</th>
+                    <th colspan="5" class="th-normais">NORMAIS</th>
+                    <th colspan="2" class="th-extras">EXTRAS</th>
                 </tr>
-            </table>
+                <tr>
+                    <th class="c-tempo">Entrada</th>
+                    <th class="c-tempo">Liberação de PT</th>
+                    <th class="c-tempo">Almoço Início</th>
+                    <th class="c-tempo">Almoço Fim</th>
+                    <th class="c-tempo">Saída</th>
+                    <th class="c-tempo th-extras">Entrada</th>
+                    <th class="c-tempo th-extras">Saída</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyHoras"></tbody>
+        </table>
 
-        </section>
+        <!-- ===== MATERIAIS E EQUIPAMENTOS ===== -->
+        <h2 class="titulo-tabela-dados">Materiais e Equipamentos</h2>
+        <table class="tbl-mat">
+            <thead>
+                <tr>
+                    <th class="c-item">Item</th>
+                    <th class="c-mat-desc">Modelo / Tipo do Equipamento Usado</th>
+                    <th class="c-mat-qtd">Qtd.</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyMat"></tbody>
+        </table>
 
-        <section>
-            <h2 class="titulo-tabela-dados">Fotos da Execução</h2>
-            <div class="tabela-dados-projeto">
-                <table>
-                    <tr class="table-imagens-legend">
-                        <th class="table-legends">Antes da Execução do
-                            Serviço</th>
-                        <td class="table-imagens">
-                            <img id="fotoAntes"
-                                style="max-width: 100%; max-height: 120px;"></td>
-                    </tr>
-                </table>
-                <table>
-                    <tr class="table-imagens-legend">
-                        <th class="table-legends">Após Execução</th>
-                        <td class="table-imagens">
-                            <img id="fotoDepois"
-                                style="max-width: 100%; max-height: 120px;"></td>
-                    </tr>
-                </table>
-            </div>
+        <!-- ===== COMENTÁRIOS ADICIONAIS ===== -->
+        <h2 class="titulo-tabela-dados">Comentários Adicionais / Fiscalização</h2>
+        <div class="comentarios-bloco" id="comentarios">
+            <div class="comentarios-linha"></div>
+            <div class="comentarios-linha"></div>
+            <div class="comentarios-linha"></div>
+            <div class="comentarios-linha"></div>
+            <div class="comentarios-linha"></div>
+            <div class="comentarios-linha"></div>
+        </div>
 
-        </section>
-
-        <section>
-            <h2 class="titulo-tabela-dados">Materiais Utilizados</h2>
-            <div class="tabela-dados-material">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Qtd.</th>
-                            <th>Descrição do Material</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="item"></td>
-                            <td class="quantidade"></td>
-                            <td class="descricao-material"></td>
-                        </tr>
-                        <tr>
-                            <td class="item"></td>
-                            <td class="quantidade"></td>
-                            <td class="descricao-material"></td>
-                        </tr>
-                        <tr>
-                            <td class="item"></td>
-                            <td class="quantidade"></td>
-                            <td class="descricao-material"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Qtd.</th>
-                            <th>Descrição do Material</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="item"></td>
-                            <td class="quantidade"></td>
-                            <td class="descricao-material"></td>
-                        </tr>
-                        <tr>
-                            <td class="item"></td>
-                            <td class="quantidade"></td>
-                            <td class="descricao-material"></td>
-                        </tr>
-                        <tr>
-                            <td class="item"></td>
-                            <td class="quantidade"></td>
-                            <td class="descricao-material"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </section>
+        <!-- ===== FOOTER ===== -->
         <footer>
 
             <div class="ass-campo"><p>_________________________</p>
@@ -326,9 +323,10 @@
                 <p>Data</p></div>
 
         </footer>
-        <script src="./controller/html2pdf.bundle.min.js"></script>
 
-        <script type="module" src="../../controller/rde-rep.js"></script>
-    </body>
+    </div>
+
+    <script type="module" src="../../controller/rdo.js"></script>
+</body>
 
 </html>
