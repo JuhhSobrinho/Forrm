@@ -299,13 +299,13 @@ p {
 @media print {
     @page {
         size: A4;
-        margin: 5mm 5mm 0mm 5mm;
+        margin: 0mm 0mm 0mm 0mm;
         /* remove margem da página impressa */
     }
 
     header {
         position: fixed;
-        padding: 30px;
+        padding: 50px;
         top: 0;
         left: 0;
         right: 0;
@@ -324,19 +324,15 @@ p {
 
 
     .pagina {
-        padding: 10px;
+        padding: 15px;
         box-sizing: border-box;
         border: 4px solid var(--cor-destaque);
     }
 
+    /* Fotos ficam na página 1 — quebra de página ocorre APÓS elas */
     .tbl-fotos-execucao {
-        /* Fotos sempre em página própria — evita sobreposição do header fixo */
-        page-break-before: always;
-        break-before: page;
         page-break-after: always;
         break-after: page;
-        /* Empurra abaixo do header fixo (mesmo valor das outras seções) */
-        margin-top: 130px;
     }
 
     /* Cada tabela de foto ocupa 1/3 igual da linha */
@@ -344,8 +340,13 @@ p {
         flex: 1;
     }
 
-    .tbl-anotacoes,
+    /* Página 1: empurra conteúdo abaixo do header fixo */
     .emissor-revisor {
+        margin-top: 130px;
+    }
+
+    /* Página 2: empurra anotações abaixo do header fixo */
+    .tbl-anotacoes {
         margin-top: 130px;
     }
 
@@ -360,5 +361,36 @@ p {
         border: 2px solid var(--cor-destaque) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+    }
+
+    /* Compacta seções para garantir que as fotos cabem na página 1 */
+    h2 {
+        font-size: 10.5pt;
+        padding: 2px 4px;
+        margin-top: 2px;
+    }
+
+    th, td {
+        padding: 2px 3px;
+    }
+
+    .campo-dados {
+        font-size: 10px;
+    }
+
+    .form-check-label {
+        font-size: 10px;
+    }
+
+    table {
+        margin-top: 2px;
+    }
+
+    #resumoAtividades {
+        height: 70px;
+    }
+
+    .text-area {
+        padding: 4px 6px 0 6px;
     }
 }
