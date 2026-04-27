@@ -330,8 +330,18 @@ p {
     }
 
     .tbl-fotos-execucao {
+        /* Fotos sempre em página própria — evita sobreposição do header fixo */
+        page-break-before: always;
+        break-before: page;
         page-break-after: always;
         break-after: page;
+        /* Empurra abaixo do header fixo (mesmo valor das outras seções) */
+        margin-top: 130px;
+    }
+
+    /* Cada tabela de foto ocupa 1/3 igual da linha */
+    .tbl-fotos-execucao table {
+        flex: 1;
     }
 
     .tbl-anotacoes,
