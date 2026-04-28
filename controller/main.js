@@ -376,6 +376,28 @@ document.getElementById("closeInstallToast")?.addEventListener("click", () => {
 
         // Salva e redireciona
         localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
+
+        // Envia para Google Sheets
+        fetch("https://script.google.com/macros/s/AKfycbwqerEudE3ARyWcAGYuv16Tzho-P5enV9trSDZhoZO_MMLH26i1YcSaVm0x8IFqUyJT/exec", {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({
+                tipo:       "RDE",
+                nrde:       dados.nrde,
+                data:       dados.data,
+                cliente:    dados.cliente,
+                local:      dados.local,
+                osTeam:     dados.osTeam,
+                tag:        dados.tag,
+                diametro:   dados.diametro,
+                tipoReparo: (dados.tiposReparo     || []).join(", "),
+                geometria:  (dados.geometriaReparo || []).join(", "),
+                emissor:    dados.emissor,
+                revisor:    dados.revisor,
+                descricao:  dados.descricao
+            })
+        }).catch(() => {});
+
         window.open("../view/modelo/rde-modelo.html", "_blank");
     });
 });

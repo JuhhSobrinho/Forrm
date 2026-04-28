@@ -313,6 +313,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Salva e redireciona
         localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
+
+        // Envia para Google Sheets
+        fetch("https://script.google.com/macros/s/AKfycbwqerEudE3ARyWcAGYuv16Tzho-P5enV9trSDZhoZO_MMLH26i1YcSaVm0x8IFqUyJT/exec", {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({
+                tipo:      "RDO",
+                nrdo:      dados.nrdo,
+                data:      dados.data,
+                cliente:   dados.cliente,
+                local:     dados.local,
+                unidade:   dados.unidade,
+                osTeam:    dados.osTeam,
+                setor:     (dados.stometriaReparo || []).join(", "),
+                emissor:   dados.emissor,
+                revisor:   dados.revisor,
+                descricao: dados.descricao
+            })
+        }).catch(() => {});
+
         window.open("../view/modelo/rdo-modelo.html", "_blank");
     });
 });

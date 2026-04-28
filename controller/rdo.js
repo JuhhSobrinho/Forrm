@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("tituloRdo").textContent = "Nº " + (dados.nrdo || "");
 
     // ── Informações básicas ─────────────────────────────────────────────────
-    document.getElementById("cliente").textContent   = dados.cliente  || "";
-    document.getElementById("local").textContent     = dados.local    || "";
-    document.getElementById("unidade").textContent   = dados.unidade  || "";
-    document.getElementById("data").textContent      = dados.data     || "";
-    document.getElementById("ssCliente").textContent = dados.osTeam   || "";
+    document.getElementById("cliente").textContent = dados.cliente || "";
+    document.getElementById("local").textContent = dados.local || "";
+    document.getElementById("unidade").textContent = dados.unidade || "";
+    document.getElementById("data").textContent = dados.data || "";
+    document.getElementById("ssCliente").textContent = dados.osTeam || "";
 
     // ── Setor checkboxes ────────────────────────────────────────────────────
     const setores = Array.isArray(dados.stometriaReparo) ? dados.stometriaReparo : [];
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Cada item: [index, tag, diam, tipo, desc, ss, fisc]
     const MIN_ROWS = 5;
     const tbodyEscopo = document.getElementById("tbodyEscopo");
-    const escopoData  = Array.isArray(dados.EscopoDoTrabalho) ? dados.EscopoDoTrabalho : [];
+    const escopoData = Array.isArray(dados.EscopoDoTrabalho) ? dados.EscopoDoTrabalho : [];
 
     escopoData.forEach(r => {
         tbodyEscopo.appendChild(criarLinhaEscopo(r[1], r[2], r[3], r[4], r[5], r[6]));
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── Horas Homem ─────────────────────────────────────────────────────────
     // Cada item: [index, tec, entra, pt, almoEntra, almoSai, saida, extraEntra, extraSai]
     const tbodyHoras = document.getElementById("tbodyHoras");
-    const horasData  = Array.isArray(dados.horasTrabalhadas) ? dados.horasTrabalhadas : [];
+    const horasData = Array.isArray(dados.horasTrabalhadas) ? dados.horasTrabalhadas : [];
 
     horasData.forEach((r, idx) => {
         tbodyHoras.appendChild(criarLinhaHoras(idx + 1, r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8]));
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ── Materiais e Equipamentos ────────────────────────────────────────────
     // Cada item: [index, qtd, desc]  →  exibe: item | desc | qtd
     const tbodyMat = document.getElementById("tbodyMat");
-    const matData  = Array.isArray(dados.materiais) ? dados.materiais : [];
+    const matData = Array.isArray(dados.materiais) ? dados.materiais : [];
 
     matData.forEach((r, idx) => {
         tbodyMat.appendChild(criarLinhaMaterial(idx + 1, r[2], r[1]));
@@ -67,16 +67,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ── Footer ──────────────────────────────────────────────────────────────
-    const nomeEl = document.getElementById("nomeRepresentante");
-    if (dados.emissor) nomeEl.textContent = dados.emissor;
 
     // ── Impressão ───────────────────────────────────────────────────────────
     document.title = `RDO-${dados.nrdo || "01"}_${dados.local || ""}`;
 
-    // iOS (iPhone/iPad) usa window.print() — Safari gerencia via aba de
-    // compartilhamento e produz PDF limpo. html2canvas tem suporte ruim no
-    // WebKit iOS e causa distorção ou falha silenciosa.
-    // Android usa html2pdf que funciona bem no Chrome/WebView.
+    // ── Helpers ─────────────────────────────────────────────────────────────
+    function td(text, cls) {
+        const el = document.createElement("td");
+        if (cls) el.className = cls;
+        el.textContent = text || "";
+        return el;
+    }
+
+    function criarLinhaEscopo(tag, diam, tipo, desc, ss, fisc) {
+        const tr = document.createElement("tr");
+        tr.appendChild(td(tag, "c-tag"));
+        tr.appendChild(td(diam, "c-diam"));
+        tr.appendChild(td(tipo, "c-tipo"));
+        tr.appendChild(td(desc, "c-desc-esc"));
+        tr.appendChild(td(ss, "c-ss"));
+        tr.appendChild(td(fisc, "c-fisc"));
+        return tr;
+    }
+
+    function criarLinhaHoras(item, tec, entra, pt, almoEntra, almoSai, saida, extraEntra, extraSai) {
+        const tr = document.createElement("tr");
+        tr.appendChild(td(item, "c-item"));
+        tr.appendChild(td(tec, "c-tec"));
+        tr.appendChild(td(entra, "c-tempo"));
+        tr.appendChild(td(pt, "c-tempo"));
+        tr.appendChild(td(almoEntra, "c-tempo"));
+        tr.appendChild(td(almoSai, "c-tempo"));
+        tr.appendChild(td(saida, "c-tempo"));
+        tr.appendChild(td(extraEntra, "c-tempo extras"));
+        tr.appendChild(td(extraSai, "c-tempo extras"));
+        return tr;
+    }
+
+    function criarLinhaMaterial(item, desc, qtd) {
+        const tr = document.createElement("tr");
+        tr.appendChild(td(item, "c-item"));
+        tr.appendChild(td(desc, "c-mat-desc"));
+        tr.appendChild(td(qtd, "c-mat-qtd"));
+        return tr;
+    }
+
+    // ── Dispara impressão após renderização completa ─────────────────────────
     const isAndroid = /Android/i.test(navigator.userAgent);
 
     if (isAndroid) {
@@ -92,49 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
             .from(document.body)
             .save();
     } else {
-        // Desktop e iOS: impressão nativa
-        window.print();
-    }
-
-    // ── Helpers ─────────────────────────────────────────────────────────────
-    function td(text, cls) {
-        const el = document.createElement("td");
-        if (cls) el.className = cls;
-        el.textContent = text || "";
-        return el;
-    }
-
-    function criarLinhaEscopo(tag, diam, tipo, desc, ss, fisc) {
-        const tr = document.createElement("tr");
-        tr.appendChild(td(tag,  "c-tag"));
-        tr.appendChild(td(diam, "c-diam"));
-        tr.appendChild(td(tipo, "c-tipo"));
-        tr.appendChild(td(desc, "c-desc-esc"));
-        tr.appendChild(td(ss,   "c-ss"));
-        tr.appendChild(td(fisc, "c-fisc"));
-        return tr;
-    }
-
-    function criarLinhaHoras(item, tec, entra, pt, almoEntra, almoSai, saida, extraEntra, extraSai) {
-        const tr = document.createElement("tr");
-        tr.appendChild(td(item,       "c-item"));
-        tr.appendChild(td(tec,        "c-tec"));
-        tr.appendChild(td(entra,      "c-tempo"));
-        tr.appendChild(td(pt,         "c-tempo"));
-        tr.appendChild(td(almoEntra,  "c-tempo"));
-        tr.appendChild(td(almoSai,    "c-tempo"));
-        tr.appendChild(td(saida,      "c-tempo"));
-        tr.appendChild(td(extraEntra, "c-tempo extras"));
-        tr.appendChild(td(extraSai,   "c-tempo extras"));
-        return tr;
-    }
-
-    function criarLinhaMaterial(item, desc, qtd) {
-        const tr = document.createElement("tr");
-        tr.appendChild(td(item, "c-item"));
-        tr.appendChild(td(desc, "c-mat-desc"));
-        tr.appendChild(td(qtd,  "c-mat-qtd"));
-        return tr;
+        console.log("Ola mundinho");
+        
+        setTimeout(() => window.print(), 300);
     }
 
 });
