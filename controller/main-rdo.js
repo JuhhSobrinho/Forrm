@@ -329,7 +329,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 descricao: dados.descricao,
                 equipe:    (dados.horasTrabalhadas || [])
                                .filter(r => r[1])
-                               .map(r => `${r[1]}: E=${r[2]||"-"} Alm=${r[4]||"-"}~${r[5]||"-"} S=${r[6]||"-"}`)
+                               .map(r => {
+                                   let s = `${r[1]}: E=${r[2]||"-"} Alm=${r[4]||"-"}~${r[5]||"-"} S=${r[6]||"-"}`;
+                                   if (r[7] || r[8]) s += ` Ext=${r[7]||"-"}~${r[8]||"-"}`;
+                                   return s;
+                               })
                                .join(" | ")
             })
         }).catch(() => {});
