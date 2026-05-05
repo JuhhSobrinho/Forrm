@@ -244,8 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const descricao = document.getElementById("descricao").value;
 
-        const anotacao = document.getElementById("anotacao").value;
-
         // ESCOPO DO TRABALHO
         const EscopoDoTrabalho = [];
         for (let i = 1; i <= 6; i++) {
@@ -302,7 +300,6 @@ document.addEventListener("DOMContentLoaded", () => {
             osTeam,
             stometriaReparo,
             descricao,
-            anotacao,
             EscopoDoTrabalho,
             materiais,
             horasTrabalhadas
@@ -329,7 +326,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 setor:     (dados.stometriaReparo || []).join(", "),
                 emissor:   dados.emissor,
                 revisor:   dados.revisor,
-                descricao: dados.descricao
+                descricao: dados.descricao,
+                equipe:    (dados.horasTrabalhadas || [])
+                               .filter(r => r[1])
+                               .map(r => `${r[1]}: E=${r[2]||"-"} Alm=${r[4]||"-"}~${r[5]||"-"} S=${r[6]||"-"}`)
+                               .join(" | ")
             })
         }).catch(() => {});
 
