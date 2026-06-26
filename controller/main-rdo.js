@@ -236,6 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const local = document.getElementById("local").value;
         const data = document.getElementById("data").value;
         const osTeam = document.getElementById("osTeam").value;
+        const turno = document.getElementById("turno").value;
 
         const stometriaReparo = Array.from({ length: 9 }, (_, i) => {
             const cb = document.getElementById(`sto${i + 1}`);
@@ -298,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
             unidade,
             local,
             osTeam,
+            turno,
             stometriaReparo,
             descricao,
             EscopoDoTrabalho,
@@ -323,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 local:     dados.local,
                 unidade:   dados.unidade,
                 osTeam:    dados.osTeam,
+                turno:     dados.turno,
                 setor:     (dados.stometriaReparo || []).join(", "),
                 emissor:   dados.emissor,
                 revisor:   dados.revisor,

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("unidade").textContent = dados.unidade || "";
     document.getElementById("data").textContent = dados.data || "";
     document.getElementById("ssCliente").textContent = dados.osTeam || "";
+    document.getElementById("turno").textContent = dados.turno || "";
 
     // ── Setor checkboxes ────────────────────────────────────────────────────
     const setores = Array.isArray(dados.stometriaReparo) ? dados.stometriaReparo : [];
