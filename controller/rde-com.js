@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setImage("fotoAntes", dados.fotoAntesBase64);
   setImage("fotoDepois", dados.fotoDepoisBase64);
   setImage("fotoAposPfp", dados.fotoAntesPfpBase64);
+  setImage("assinaturaTecnico", dados.assinaturaTecnicoBase64);
 
   setText("anotacaoGerais", dados.anotacao);
 

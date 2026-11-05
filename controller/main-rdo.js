@@ -341,6 +341,8 @@ document.addEventListener("DOMContentLoaded", () => {
             })
         }).catch(() => {});
 
-        window.open("../view/modelo/rdo-modelo.html", "_blank");
+        // No iPhone a nova aba pode ser bloqueada como pop-up; nesse caso abre na mesma aba
+        const novaAba = window.open("../view/modelo/rdo-modelo.html", "_blank");
+        if (!novaAba) window.location.href = "../view/modelo/rdo-modelo.html";
     });
 });

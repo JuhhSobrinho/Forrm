@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setImage("fotoAntes", dados.fotoAntesBase64);
   setImage("fotoDepois", dados.fotoDepoisBase64);
+  setImage("assinaturaTecnico", dados.assinaturaTecnicoBase64);
 
 
   const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);

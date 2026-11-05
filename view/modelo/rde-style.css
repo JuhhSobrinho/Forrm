@@ -394,3 +394,14 @@ p {
         padding: 4px 6px 0 6px;
     }
 }
+/* Assinatura do técnico TEAM sobre a linha */
+.ass-img {
+    max-height: 55px;
+    max-width: 190px;
+    margin: 0 auto -18px;
+    display: block;
+}
+
+.ass-img:not([src]) {
+    display: none;
+}

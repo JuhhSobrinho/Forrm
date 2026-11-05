@@ -1,3 +1,5 @@
+import { initPreviewFotos, initAssinatura } from "./form-extras.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     /* ===============================
        PWA - Botão fixo + Toast lembrete
@@ -148,6 +150,10 @@ document.getElementById("closeInstallToast")?.addEventListener("click", () => {
         desc.addEventListener("input", mostrarProximo);
     }
 
+    // Pré-visualização das fotos e assinatura do técnico
+    initPreviewFotos(["AntesExeServico", "AposExeServico", "AposExePfp"]);
+    const assinatura = initAssinatura("assinaturaTecnico", "limparAssinatura", "importarAssinatura");
+
     // Função para reduzir imagem
     function reduzirImagem(file, maxWidth = 600, maxHeight = 400) {
         return new Promise((resolve, reject) => {
@@ -254,6 +260,12 @@ document.getElementById("closeInstallToast")?.addEventListener("click", () => {
             todosFuro.forEach(rb => {
                 rb.parentElement.style.border = "none";
             });
+        }
+
+        if (assinatura.estaVazia()) {
+            alert("O técnico TEAM precisa assinar o relatório.");
+            assinatura.marcarErro();
+            return;
         }
 
 
@@ -371,7 +383,8 @@ document.getElementById("closeInstallToast")?.addEventListener("click", () => {
             fotoDepoisBase64,
             fotoAntesPfpBase64,
             anotacao,
-            materiais
+            materiais,
+            assinaturaTecnicoBase64: assinatura.paraBase64()
         };
 
         // Salva e redireciona
@@ -407,6 +420,8 @@ document.getElementById("closeInstallToast")?.addEventListener("click", () => {
             })
         }).catch(() => {});
 
-        window.open("../view/modelo/rde-modelo.html", "_blank");
+        // No iPhone a nova aba pode ser bloqueada como pop-up; nesse caso abre na mesma aba
+        const novaAba = window.open("../view/modelo/rde-modelo.html", "_blank");
+        if (!novaAba) window.location.href = "../view/modelo/rde-modelo.html";
     });
 });

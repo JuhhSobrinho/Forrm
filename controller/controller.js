@@ -1,3 +1,5 @@
+import { initPreviewFotos, initAssinatura } from "./form-extras.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const toggleLink = document.getElementById("toggleTheme");
     const form = document.getElementById("formRelatorio");
@@ -45,6 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
         qtd.addEventListener("input", mostrarProximo);
         desc.addEventListener("input", mostrarProximo);
     }
+
+    // Pré-visualização das fotos e assinatura do técnico
+    initPreviewFotos(["AntesExeServico", "AposExeServico"]);
+    const assinatura = initAssinatura("assinaturaTecnico", "limparAssinatura", "importarAssinatura");
 
     // Função para reduzir imagem
     function reduzirImagem(file, maxWidth = 600, maxHeight = 400) {
@@ -131,6 +137,12 @@ document.addEventListener("DOMContentLoaded", () => {
             todosGeo.forEach(cb => cb.parentElement.style.border = "none");
         }
 
+        if (assinatura.estaVazia()) {
+            alert("O técnico TEAM precisa assinar o relatório.");
+            assinatura.marcarErro();
+            return;
+        }
+
 
         // Captura dos dados
         const nrde = document.getElementById("nrde").value;
@@ -199,11 +211,14 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao,
             fotoAntesBase64,
             fotoDepoisBase64,
-            materiais
+            materiais,
+            assinaturaTecnicoBase64: assinatura.paraBase64()
         };
 
         // Salva e redireciona
         localStorage.setItem("dadosRelatorio", JSON.stringify(dados));
-        window.open("../view/modelo/rde-reparo.html", "_blank");
+        // No iPhone a nova aba pode ser bloqueada como pop-up; nesse caso abre na mesma aba
+        const novaAba = window.open("../view/modelo/rde-reparo.html", "_blank");
+        if (!novaAba) window.location.href = "../view/modelo/rde-reparo.html";
     });
 });

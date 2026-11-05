@@ -214,3 +214,35 @@ body.dark-mode {
     opacity: 1;
   }
 }
+/* Pré-visualização das fotos */
+.preview-foto {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.preview-foto img {
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-destaque);
+  object-fit: contain;
+}
+
+/* Campo de assinatura */
+.assinatura-canvas {
+  width: 100%;
+  height: 180px;
+  background: #fff;
+  border: 2px dashed var(--cor-destaque);
+  border-radius: 8px;
+  touch-action: none;
+  cursor: crosshair;
+  display: block;
+}
+
+.assinatura-canvas.assinatura-erro {
+  border: 2px solid red;
+}

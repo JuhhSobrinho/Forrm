@@ -462,6 +462,24 @@
                         id="desc06"></div>
             </div>
 
+            <!-- Assinatura do técnico TEAM -->
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    Assinatura do Técnico TEAM
+                    <div class="d-flex gap-2">
+                        <label for="importarAssinatura"
+                            class="btn btn-sm btn-outline-primary mb-0">Importar assinatura</label>
+                        <input type="file" id="importarAssinatura" accept="image/*" hidden>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                            id="limparAssinatura">Limpar</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="assinaturaTecnico" class="assinatura-canvas"></canvas>
+                    <small class="text-muted">Assine com o dedo ou o mouse dentro do quadro, ou importe uma foto da sua assinatura.</small>
+                </div>
+            </div>
+
             <!-- Botão de envio -->
             <button type="submit" class="btn btn-primary">
                 Gerar Relatório De Execução</button>
@@ -473,6 +491,7 @@
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
         <script type="module" src="../controller/controller.js"></script>
+    <script type="module" src="../controller/sw-register.js"></script>
     </body>
 
 </html>
