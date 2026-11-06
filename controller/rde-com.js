@@ -103,12 +103,20 @@ document.addEventListener("DOMContentLoaded", () => {
   setImage("fotoAntes", dados.fotoAntesBase64);
   setImage("fotoDepois", dados.fotoDepoisBase64);
   setImage("fotoAposPfp", dados.fotoAntesPfpBase64);
+
+  // Sem foto do PFP: esconde a coluna para as outras duas fotos ficarem maiores
+  if (!dados.fotoAntesPfpBase64) {
+    document.getElementById("fotoAposPfp").closest("table").style.display = "none";
+  }
   setImage("assinaturaTecnico", dados.assinaturaTecnicoBase64);
 
   setText("anotacaoGerais", dados.anotacao);
 
 
   const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+  // Página 1 com a altura da folha: as fotos crescem até ocupar o espaço livre
+  document.body.classList.add("modo-folha");
 
   if (!isMobile) {
     // 👉 Desktop: imprime direto

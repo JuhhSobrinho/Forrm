@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const assinatura = initAssinatura("assinaturaTecnico", "limparAssinatura", "importarAssinatura");
 
     // Função para reduzir imagem
-    function reduzirImagem(file, maxWidth = 600, maxHeight = 400) {
+    function reduzirImagem(file, maxWidth = 1200, maxHeight = 1200) {
         return new Promise((resolve, reject) => {
             if (!file) return resolve(null);
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvas.height = height;
                 ctx.drawImage(img, 0, 0, width, height);
 
-                const base64 = canvas.toDataURL("image/jpeg", 0.6);
+                const base64 = canvas.toDataURL("image/jpeg", 0.7);
                 resolve(base64);
             };
 

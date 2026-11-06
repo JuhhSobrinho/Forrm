@@ -222,6 +222,13 @@ th,
     height: 170px;
 }
 
+.tbl-fotos-execucao img {
+    display: block;
+    max-width: 100%;
+    max-height: 170px;
+    margin: 0 auto;
+}
+
 .item,
 .quantidade {
     text-align: center;
@@ -393,7 +400,93 @@ p {
     .text-area {
         padding: 4px 6px 0 6px;
     }
+
+    /* RDE Compósito: altura útil da folha A4 e espaço do cabeçalho fixo */
+    .modo-folha {
+        --altura-folha: 280mm;
+    }
+
+    .pagina-rde-1 .emissor-revisor {
+        margin-top: 112px;
+    }
 }
+
+/* ---- RDE Compósito (impressão e PDF do celular): a página 1 ocupa a folha
+   toda e as fotos ficam com todo o espaço que sobrar ---- */
+.modo-folha .pagina-rde-1 {
+    height: var(--altura-folha, 280mm);
+    display: flex;
+    flex-direction: column;
+    break-after: page;
+    page-break-after: always;
+}
+
+.modo-folha .pagina-rde-1 > section {
+    flex: none;
+}
+
+.modo-folha .pagina-rde-1 .emissor-revisor {
+    margin-bottom: 6px;
+}
+
+.modo-folha .pagina-rde-1 .titulo-tabela-dados {
+    margin-bottom: 0;
+}
+
+.modo-folha .pagina-rde-1 #resumoAtividades {
+    height: auto;
+    min-height: 40px;
+}
+
+.modo-folha .pagina-rde-1 > .secao-fotos {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.modo-folha .secao-fotos .tbl-fotos-execucao {
+    flex: 1;
+    min-height: 0;
+    gap: 4px;
+    page-break-after: auto;
+    break-after: auto;
+}
+
+.modo-folha .secao-fotos .tbl-fotos-execucao table,
+.modo-folha .secao-fotos .tbl-fotos-execucao tbody {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.modo-folha .secao-fotos .table-imagens-legend {
+    flex: 1;
+}
+
+.modo-folha .secao-fotos .table-imagens {
+    flex: 1;
+    height: auto;
+    position: relative;
+    padding: 0;
+}
+
+.modo-folha .secao-fotos .table-imagens img {
+    position: absolute;
+    inset: 3px;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    max-height: none;
+    object-fit: contain;
+}
+
+/* PDF do celular (html2pdf, folha de 650x950pt = 867x1267px): a página 1
+   termina exatamente no fim da folha, e a página 2 começa no topo da seguinte */
+.pdf-mobile.modo-folha {
+    --altura-folha: 1230px;
+}
+
 /* Assinatura do técnico TEAM sobre a linha */
 .ass-img {
     max-height: 55px;
